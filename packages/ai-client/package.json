@@ -1,0 +1,19 @@
+{
+  "name": "@babyguardian/ai-client",
+  "version": "1.0.0",
+  "description": "AI integrations for BabyGuardian (Groq, OpenAI, Claude, Gemini)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "groq-sdk": "^0.3.0",
+    "openai": "^4.0.0",
+    "@anthropic-ai/sdk": "^0.17.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.0"
+  }
+}
