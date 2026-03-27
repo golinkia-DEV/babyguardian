@@ -1,7 +1,10 @@
-import { Controller, Get, Post, Patch, Body, Param, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Body, Param, Query, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { VaccinesService } from './vaccines.service';
+import { RecordVaccineDto } from './dto/record-vaccine.dto';
+import { GenerateScheduleDto } from './dto/generate-schedule.dto';
+import { UpdateVaccineStatusDto } from './dto/update-vaccine-status.dto';
 
 @ApiTags('vaccines')
 @ApiBearerAuth()
@@ -18,28 +21,38 @@ export class VaccinesController {
 
   @Get('baby/:babyId')
   @ApiOperation({ summary: 'Get vaccine records for baby' })
-  getBabyVaccines(@Param('babyId') babyId: string) {
-    return this.vaccinesService.getBabyVaccines(babyId);
+  getBabyVaccines(@Param('babyId') babyId: string, @Request() req: { user: { id: string } }) {
+    return this.vaccinesService.getBabyVaccinesForUser(req.user.id, babyId);
   }
 
   @Post('baby/:babyId/generate-schedule')
   @ApiOperation({ summary: 'Generate vaccine schedule for baby' })
   generateSchedule(
     @Param('babyId') babyId: string,
-    @Body() body: { birthDate: string; countryCode?: string },
+    @Body() dto: GenerateScheduleDto,
+    @Request() req: { user: { id: string } },
   ) {
-    return this.vaccinesService.generateBabySchedule(babyId, body.birthDate, body.countryCode);
+    return this.vaccinesService.generateBabyScheduleForUser(
+      req.user.id,
+      babyId,
+      dto.birthDate,
+      dto.countryCode,
+    );
   }
 
   @Post()
   @ApiOperation({ summary: 'Record a vaccine application' })
-  record(@Body() body: any) {
-    return this.vaccinesService.recordVaccine(body);
+  record(@Body() dto: RecordVaccineDto, @Request() req: { user: { id: string } }) {
+    return this.vaccinesService.recordForOwner(req.user.id, dto);
   }
 
   @Patch(':id/status')
   @ApiOperation({ summary: 'Update vaccine status' })
-  updateStatus(@Param('id') id: string, @Body() body: { status: string; appliedDate?: string }) {
-    return this.vaccinesService.updateVaccineStatus(id, body.status, body.appliedDate);
+  updateStatus(
+    @Param('id') id: string,
+    @Body() dto: UpdateVaccineStatusDto,
+    @Request() req: { user: { id: string } },
+  ) {
+    return this.vaccinesService.updateVaccineStatusForOwner(req.user.id, id, dto.status, dto.appliedDate);
   }
 }

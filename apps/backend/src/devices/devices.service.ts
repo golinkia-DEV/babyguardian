@@ -1,9 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { SmartDevice } from './smart-device.entity';
 import { InviteToken } from './invite-token.entity';
 import * as net from 'net';
+import { HomesService } from '../homes/homes.service';
+import { CreateDeviceDto } from './dto/create-device.dto';
+import { DiscoverDeviceDto } from './dto/discover-device.dto';
 
 @Injectable()
 export class DevicesService {
@@ -12,10 +15,20 @@ export class DevicesService {
     private devicesRepository: Repository<SmartDevice>,
     @InjectRepository(InviteToken)
     private inviteTokensRepository: Repository<InviteToken>,
+    private homesService: HomesService,
   ) {}
+
+  async findById(id: string): Promise<SmartDevice | null> {
+    return this.devicesRepository.findOne({ where: { id } });
+  }
 
   async findByHome(homeId: string): Promise<SmartDevice[]> {
     return this.devicesRepository.find({ where: { homeId, isActive: true } });
+  }
+
+  async findByHomeForUser(userId: string, homeId: string): Promise<SmartDevice[]> {
+    await this.homesService.assertOwner(userId, homeId);
+    return this.findByHome(homeId);
   }
 
   async create(data: Partial<SmartDevice>): Promise<SmartDevice> {
@@ -24,13 +37,41 @@ export class DevicesService {
     return this.devicesRepository.save(device);
   }
 
-  async updateState(id: string, state: Record<string, any>): Promise<SmartDevice> {
-    await this.devicesRepository.update(id, { currentState: state });
-    return this.devicesRepository.findOne({ where: { id } });
+  async createForUser(userId: string, dto: CreateDeviceDto): Promise<SmartDevice> {
+    await this.homesService.assertOwner(userId, dto.homeId);
+    return this.create({
+      homeId: dto.homeId,
+      name: dto.name,
+      deviceType: dto.deviceType,
+      protocol: dto.protocol,
+      ipAddress: dto.ipAddress,
+      currentState: dto.currentState,
+    });
+  }
+
+  async updateState(id: string, state: Record<string, unknown>): Promise<SmartDevice> {
+    await this.devicesRepository.update(id, { currentState: state as Record<string, any> });
+    const device = await this.devicesRepository.findOne({ where: { id } });
+    if (!device) throw new NotFoundException('Device not found');
+    return device;
+  }
+
+  async updateStateForUser(userId: string, id: string, state: Record<string, unknown>): Promise<SmartDevice> {
+    const d = await this.findById(id);
+    if (!d) throw new NotFoundException('Device not found');
+    await this.homesService.assertOwner(userId, d.homeId);
+    return this.updateState(id, state);
   }
 
   async delete(id: string): Promise<void> {
     await this.devicesRepository.update(id, { isActive: false });
+  }
+
+  async deleteForUser(userId: string, id: string): Promise<void> {
+    const d = await this.findById(id);
+    if (!d) throw new NotFoundException('Device not found');
+    await this.homesService.assertOwner(userId, d.homeId);
+    await this.delete(id);
   }
 
   async createPairingToken(homeId: string, createdBy: string) {
@@ -54,9 +95,25 @@ export class DevicesService {
     };
   }
 
-  async getPairingStatus(code: string) {
+  async createPairingTokenForUser(userId: string, homeId: string) {
+    await this.homesService.assertOwner(userId, homeId);
+    return this.createPairingToken(homeId, userId);
+  }
+
+  /**
+   * Solo el creador del token o el dueño del hogar pueden ver el estado real;
+   * para el resto se responde como expirado para no filtrar existencia del código.
+   */
+  async getPairingStatusForUser(userId: string, code: string) {
     const invite = await this.inviteTokensRepository.findOne({ where: { token: code } });
     if (!invite) return { status: 'expired' as const };
+    if (invite.createdBy !== userId) {
+      try {
+        await this.homesService.assertOwner(userId, invite.homeId);
+      } catch {
+        return { status: 'expired' as const };
+      }
+    }
     if (invite.usedAt) return { status: 'linked' as const };
     if (invite.expiresAt.getTime() < Date.now()) return { status: 'expired' as const };
     return { status: 'waiting' as const };
@@ -75,7 +132,11 @@ export class DevicesService {
     return { success: true, homeId: invite.homeId };
   }
 
-  async discover(deviceType: 'camera' | 'light' | 'router' | 'sensor', subnet?: string) {
+  async discover(dto: DiscoverDeviceDto) {
+    return this.scanNetwork(dto.deviceType, dto.subnet);
+  }
+
+  private async scanNetwork(deviceType: 'camera' | 'light' | 'router' | 'sensor', subnet?: string) {
     const networkPrefix = this.normalizeSubnet(subnet);
     const scanPlan = this.getPortsByType(deviceType);
     const hosts = Array.from({ length: 64 }, (_, i) => `${networkPrefix}.${i + 1}`);

@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.core.view.WindowCompat
 import dagger.hilt.android.AndroidEntryPoint
-import cl.babyguardian.hub.ui.navigation.BabyGuardianNavHost
 import cl.babyguardian.hub.ui.theme.BabyGuardianTheme
+import cl.babyguardian.hub.ui.BabyGuardianRoot
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val isDarkTheme = isSystemInDarkTheme()
             BabyGuardianTheme(darkTheme = isDarkTheme) {
-                BabyGuardianNavHost()
+                BabyGuardianRoot()
             }
         }
     }

@@ -1,7 +1,5 @@
 package cl.babyguardian.hub.service
 
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,26 +10,17 @@ import javax.inject.Singleton
  */
 @Singleton
 class CryDetectionManager @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val modelDownloadManager: ModelDownloadManager
+    private val modelDownloadManager: ModelDownloadManager,
 ) {
-    private var isListening = false
-
+    @Suppress("UNUSED_PARAMETER")
     suspend fun startListening(onCryDetected: suspend (confidence: Float) -> Unit) {
-        isListening = true
         val modelPath = modelDownloadManager.ensureCryModelPath()
-        Timber.i("Cry model ready at $modelPath")
-        // TODO: Initialize TFLite audio model using modelPath
-        // TODO: Start AudioRecord capture at 16kHz mono
-        // TODO: Run inference on 1-second overlapping windows
-        // TODO: Call onCryDetected when confidence > threshold
-        if (isListening) {
-            onCryDetected(0f)
-        }
+        Timber.i("Cry model ready at $modelPath; pipeline TFLite + AudioRecord pendiente")
+        // TODO: Inicializar modelo TFLite, AudioRecord 16 kHz mono, ventanas de 1 s y llamar onCryDetected cuando confianza > umbral
+        // No invocar onCryDetected hasta tener inferencia real (evita eventos falsos en backend).
     }
 
     fun stop() {
-        isListening = false
-        // TODO: Release AudioRecord and TFLite resources
+        // TODO: Liberar AudioRecord y recursos TFLite
     }
 }

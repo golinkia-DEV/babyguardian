@@ -19,4 +19,16 @@ export default () => ({
   google: {
     clientId: process.env.GOOGLE_CLIENT_ID || '',
   },
+  camera: {
+    /** Clave dedicada para AES (recomendado en producción); si falta, se deriva de JWT_SECRET */
+    encryptionKey: process.env.CAMERA_ENCRYPTION_KEY || '',
+  },
+  ai: {
+    groqApiKey: process.env.GROQ_API_KEY || '',
+    openaiApiKey: process.env.OPENAI_API_KEY || '',
+    anthropicApiKey: process.env.ANTHROPIC_API_KEY || '',
+    defaultModelGroq: process.env.GROQ_MODEL || 'llama-3.1-70b-versatile',
+    defaultModelOpenai: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+    defaultModelAnthropic: process.env.ANTHROPIC_MODEL || 'claude-3-5-haiku-20241022',
+  },
 });

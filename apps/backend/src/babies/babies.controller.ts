@@ -2,6 +2,8 @@ import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Request }
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { BabiesService } from './babies.service';
+import { CreateBabyDto } from './dto/create-baby.dto';
+import { UpdateBabyDto } from './dto/update-baby.dto';
 
 @ApiTags('babies')
 @ApiBearerAuth()
@@ -12,31 +14,35 @@ export class BabiesController {
 
   @Get('home/:homeId')
   @ApiOperation({ summary: 'Get babies by home' })
-  findByHome(@Param('homeId') homeId: string) {
-    return this.babiesService.findByHome(homeId);
+  findByHome(@Param('homeId') homeId: string, @Request() req: { user: { id: string } }) {
+    return this.babiesService.findByHomeForOwner(req.user.id, homeId);
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get baby by ID' })
-  findOne(@Param('id') id: string) {
-    return this.babiesService.findById(id);
+  findOne(@Param('id') id: string, @Request() req: { user: { id: string } }) {
+    return this.babiesService.findOneForOwner(req.user.id, id);
   }
 
   @Post()
   @ApiOperation({ summary: 'Create baby profile' })
-  create(@Body() body: any) {
-    return this.babiesService.create(body);
+  create(@Body() dto: CreateBabyDto, @Request() req: { user: { id: string } }) {
+    return this.babiesService.createForOwner(req.user.id, dto);
   }
 
   @Patch(':id')
   @ApiOperation({ summary: 'Update baby profile' })
-  update(@Param('id') id: string, @Body() body: any) {
-    return this.babiesService.update(id, body);
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateBabyDto,
+    @Request() req: { user: { id: string } },
+  ) {
+    return this.babiesService.updateForOwner(req.user.id, id, dto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete baby profile' })
-  delete(@Param('id') id: string) {
-    return this.babiesService.delete(id);
+  delete(@Param('id') id: string, @Request() req: { user: { id: string } }) {
+    return this.babiesService.deleteForOwner(req.user.id, id);
   }
 }

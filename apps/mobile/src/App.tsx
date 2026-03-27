@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -18,29 +19,52 @@ import { useAuthStore } from './store/authStore';
 import { useHomeStore } from './store/homeStore';
 import { useCameraStore } from './store/cameraStore';
 import { useSmartDeviceStore } from './store/smartDeviceStore';
+import { useAIStore } from './store/aiStore';
 
 const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
 
-export default function App() {
-  const { isAuthenticated } = useAuthStore();
+function AppContent() {
+  const { isAuthenticated, hydrated, hydrate } = useAuthStore();
   const { loadMyHome } = useHomeStore();
   const { loadCameras } = useCameraStore();
   const { loadDevices } = useSmartDeviceStore();
+  const { hydrateProvider } = useAIStore();
+  const [bootReady, setBootReady] = useState(false);
 
   useEffect(() => {
-    if (!isAuthenticated) return;
+    let cancelled = false;
+    (async () => {
+      await hydrate();
+      await hydrateProvider();
+      if (!cancelled) setBootReady(true);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [hydrate, hydrateProvider]);
+
+  useEffect(() => {
+    if (!isAuthenticated || !hydrated) return;
     loadMyHome()
       .then(async () => {
         await Promise.all([loadCameras(), loadDevices()]);
       })
       .catch(() => undefined);
-  }, [isAuthenticated, loadMyHome, loadCameras, loadDevices]);
+  }, [isAuthenticated, hydrated, loadMyHome, loadCameras, loadDevices]);
+
+  if (!bootReady || !hydrated) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
   return (
-    <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <Stack.Navigator
+          key={isAuthenticated ? 'authed' : 'guest'}
           screenOptions={{ headerShown: false }}
           initialRouteName={isAuthenticated ? 'Main' : 'Onboarding'}
         >
@@ -59,6 +83,13 @@ export default function App() {
           <Stack.Screen name="AISettings" component={AISettingsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppContent />
     </QueryClientProvider>
   );
 }

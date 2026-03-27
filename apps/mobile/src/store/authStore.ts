@@ -3,6 +3,7 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import * as Keychain from 'react-native-keychain';
 import { authApi } from '../api/authApi';
+import { usersApi } from '../api/usersApi';
 
 interface User {
   id: string;
@@ -15,17 +16,47 @@ interface AuthState {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;
+  hydrated: boolean;
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   setAuth: (user: User, token: string) => void;
+  hydrate: () => Promise<void>;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   token: null,
   isAuthenticated: false,
+  hydrated: false,
 
   setAuth: (user, token) => set({ user, token, isAuthenticated: true }),
+
+  hydrate: async () => {
+    if (get().hydrated) return;
+    try {
+      const creds = await Keychain.getGenericPassword({ service: 'babyguardian.jwt' });
+      if (!creds?.password) {
+        set({ hydrated: true });
+        return;
+      }
+      set({ token: creds.password });
+      const me = await usersApi.getMe();
+      set({
+        user: {
+          id: me.id,
+          email: me.email,
+          fullName: me.fullName,
+          avatarUrl: me.avatarUrl,
+        },
+        token: creds.password,
+        isAuthenticated: true,
+        hydrated: true,
+      });
+    } catch {
+      await Keychain.resetGenericPassword({ service: 'babyguardian.jwt' }).catch(() => undefined);
+      set({ user: null, token: null, isAuthenticated: false, hydrated: true });
+    }
+  },
 
   signInWithGoogle: async () => {
     const webClientId = process.env.REACT_NATIVE_GOOGLE_WEB_CLIENT_ID;
@@ -65,6 +96,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       },
       token: backendAuth.token,
       isAuthenticated: true,
+      hydrated: true,
     });
   },
 

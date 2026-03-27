@@ -1,7 +1,9 @@
 package cl.babyguardian.hub.service
 
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
+import cl.babyguardian.hub.data.api.EventsApi
+import cl.babyguardian.hub.data.local.HubPreferencesRepository
+import cl.babyguardian.hub.data.model.CreateEventRequest
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -9,31 +11,64 @@ import javax.inject.Singleton
  * Handles alert escalation logic:
  * - Debouncing (avoid alert spam)
  * - Severity classification
- * - Push notification dispatch via FCM
- * - Smart device automation triggers (lights, white noise)
+ * - Reporting events to the backend (FCM to parents is triggered server-side)
  */
 @Singleton
 class AlertEscalationManager @Inject constructor(
-    @ApplicationContext private val context: Context
+    private val hubPrefs: HubPreferencesRepository,
+    private val eventsApi: EventsApi,
 ) {
     private var lastCryAlertTime = 0L
-    private val cryDebounceMs = 30_000L // 30 seconds between cry alerts
+    private val cryDebounceMs = 30_000L
 
     suspend fun onCryDetected(confidence: Float) {
         val now = System.currentTimeMillis()
         if (now - lastCryAlertTime < cryDebounceMs) return
 
+        val token = hubPrefs.getAccessToken() ?: return
+        val homeId = hubPrefs.getPairedHomeId() ?: return
+
         lastCryAlertTime = now
-        // TODO: Send cry_detected event to backend API
-        // TODO: Trigger FCM push notification to parent mobile
-        // TODO: Trigger smart light automation (warm dim)
+        try {
+            val res = eventsApi.createEvent(
+                "Bearer $token",
+                CreateEventRequest(
+                    homeId = homeId,
+                    eventType = "cry_detected",
+                    severity = if (confidence >= 0.75) "critical" else "warn",
+                    confidence = confidence.toDouble(),
+                ),
+            )
+            if (!res.isSuccessful) {
+                Timber.w("cry_detected API ${res.code()}")
+            }
+        } catch (e: Exception) {
+            Timber.e(e, "No se pudo enviar cry_detected al backend")
+        }
     }
 
     suspend fun onFacesDetected(faces: List<DetectedFace>) {
         val unknownFaces = faces.filter { !it.isAuthorized }
-        if (unknownFaces.isNotEmpty()) {
-            // TODO: Send security_alert event to backend
-            // TODO: Trigger high-priority FCM notification
+        if (unknownFaces.isEmpty()) return
+
+        val token = hubPrefs.getAccessToken() ?: return
+        val homeId = hubPrefs.getPairedHomeId() ?: return
+
+        try {
+            val res = eventsApi.createEvent(
+                "Bearer $token",
+                CreateEventRequest(
+                    homeId = homeId,
+                    eventType = "security_unknown_face",
+                    severity = "high",
+                    metadata = mapOf("unknownCount" to unknownFaces.size),
+                ),
+            )
+            if (!res.isSuccessful) {
+                Timber.w("security_unknown_face API ${res.code()}")
+            }
+        } catch (e: Exception) {
+            Timber.e(e, "No se pudo enviar security_unknown_face al backend")
         }
     }
 }

@@ -27,6 +27,7 @@
     "firebase-admin": "^11.0.0",
     "google-auth-library": "^9.15.1",
     "passport": "^0.6.0",
+    "passport-custom": "^1.1.1",
     "passport-jwt": "^4.0.0",
     "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",

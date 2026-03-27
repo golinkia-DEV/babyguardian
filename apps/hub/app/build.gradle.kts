@@ -26,9 +26,12 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "API_BASE_URL", "\"https://api.babyguardian.example/api/v1/\"")
         }
         debug {
             isDebuggable = true
+            // Emulador Android → host: 10.0.2.2; dispositivo físico: IP de tu máquina en LAN
+            buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:3000/api/v1/\"")
         }
     }
 

@@ -11,10 +11,13 @@ import { HomesModule } from './homes/homes.module';
 import { DevicesModule } from './devices/devices.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { CamerasModule } from './cameras/cameras.module';
+import { AiModule } from './ai/ai.module';
+import { CommonModule } from './common/common.module';
 import configuration from './config/configuration';
 
 @Module({
   imports: [
+    CommonModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
@@ -39,6 +42,7 @@ import configuration from './config/configuration';
     HomesModule,
     DevicesModule,
     CamerasModule,
+    AiModule,
     NotificationsModule,
   ],
 })
