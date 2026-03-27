@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-3:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ea042d0f9c480743349cafa1316f3bfe/transformed/appcompat-1.6.1/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}

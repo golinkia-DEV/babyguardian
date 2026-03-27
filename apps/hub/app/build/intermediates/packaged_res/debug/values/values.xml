@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BabyGuardian Hub</string>
+    <string name="gcm_defaultSenderId" translatable="false">143723306533</string>
+    <string name="google_api_key" translatable="false">AIzaSyASuBzFQOwmUbLzEGuL3wGwhoM_Q2WiVAk</string>
+    <string name="google_app_id" translatable="false">1:143723306533:android:99216f0c9368fa5f2b29cc</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyASuBzFQOwmUbLzEGuL3wGwhoM_Q2WiVAk</string>
+    <string name="google_storage_bucket" translatable="false">babyguardian-5d60d.firebasestorage.app</string>
+    <string name="project_id" translatable="false">babyguardian-5d60d</string>
+    <style name="Theme.BabyGuardianHub" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

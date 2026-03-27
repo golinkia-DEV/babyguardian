@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-3:/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/467d82c073dd740325cbce077846f1c2/transformed/media-1.0.0/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,121,182,248",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "116,177,243,310"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "347,413,474,540",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "408,469,535,602"
+                    }
+                },
+                {
+                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ea042d0f9c480743349cafa1316f3bfe/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -85,7 +85,7 @@ dependencies {
     kapt("io.objectbox:objectbox-processor:3.7.1")
 
     // RTSP/Video streaming
-    implementation("org.videolan.android:libvlc-all:3.6.0-eap16")
+    implementation("org.videolan.android:libvlc-all:3.6.2")
 
     // ML Kit for face detection
     implementation("com.google.mlkit:face-detection:16.1.5")

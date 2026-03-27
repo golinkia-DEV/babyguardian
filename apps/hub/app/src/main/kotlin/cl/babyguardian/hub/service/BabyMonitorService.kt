@@ -81,7 +81,7 @@ class BabyMonitorService : Service() {
         return NotificationCompat.Builder(this, BabyGuardianApp.CHANNEL_MONITOR)
             .setContentTitle("BabyGuardian activo")
             .setContentText("Monitoreando al bebé...")
-            .setSmallIcon(R.drawable.ic_baby_monitor)
+            .setSmallIcon(R.drawable.ic_launcher)
             .setContentIntent(pendingIntent)
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_LOW)

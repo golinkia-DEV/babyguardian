@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-3:/values-he/values-he.xml",
+            "map": [
+                {
+                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/res/values-he/values-he.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,111,161,296",
+                        "endColumns": "55,49,134,89",
+                        "endOffsets": "106,156,291,381"
+                    }
+                }
+            ]
+        }
+    ]
+}

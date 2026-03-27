@@ -1,0 +1,714 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="cl.babyguardian.hub"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Permissions -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:5:5-67
+12-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:5:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:6:5-79
+13-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:6:22-76
+14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+14-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:7:5-76
+14-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:7:22-73
+15    <uses-permission android:name="android.permission.CAMERA" />
+15-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:8:5-65
+15-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:8:22-62
+16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+16-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:9:5-71
+16-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:9:22-68
+17    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+17-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:10:5-77
+17-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:10:22-74
+18    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+18-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:11:5-88
+18-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:11:22-85
+19    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+19-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:12:5-84
+19-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:12:22-81
+20    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+20-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:13:5-92
+20-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:13:22-89
+21    <uses-permission android:name="android.permission.WAKE_LOCK" />
+21-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:14:5-68
+21-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:14:22-65
+22    <uses-permission android:name="android.permission.VIBRATE" />
+22-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:15:5-66
+22-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:15:22-63
+23    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+23-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:16:5-77
+23-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:16:22-74
+24    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+24-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:17:5-81
+24-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:17:22-78
+25    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+25-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:18:5-86
+25-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:18:22-83
+26    <uses-permission android:name="android.permission.NFC" />
+26-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:19:5-62
+26-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:19:22-59
+27
+28    <uses-feature
+28-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:21:5-85
+29        android:name="android.hardware.camera"
+29-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:21:19-57
+30        android:required="false" />
+30-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:21:58-82
+31    <uses-feature
+31-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:22:5-88
+32        android:name="android.hardware.microphone"
+32-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:22:19-61
+33        android:required="true" />
+33-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:22:62-85
+34    <!-- Required by older versions of Google Play services to create IID tokens -->
+35    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+35-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:26:5-82
+35-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:26:22-79
+36
+37    <permission
+37-->[androidx.core:core:1.12.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d8af0baa0ed5bdfe3c755956b74824ee/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+38        android:name="cl.babyguardian.hub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+38-->[androidx.core:core:1.12.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d8af0baa0ed5bdfe3c755956b74824ee/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+39        android:protectionLevel="signature" />
+39-->[androidx.core:core:1.12.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d8af0baa0ed5bdfe3c755956b74824ee/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+40
+41    <uses-permission android:name="cl.babyguardian.hub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+41-->[androidx.core:core:1.12.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d8af0baa0ed5bdfe3c755956b74824ee/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+41-->[androidx.core:core:1.12.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d8af0baa0ed5bdfe3c755956b74824ee/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+42
+43    <uses-feature
+43-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+44        android:name="android.hardware.camera.front"
+44-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+45        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+45-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+46    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+47    <uses-feature
+47-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+48        android:name="android.hardware.camera.autofocus"
+48-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+49        android:required="false" />
+49-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+50    <uses-feature
+50-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+51        android:name="android.hardware.camera.flash"
+51-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+52        android:required="false" />
+52-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+53    <uses-feature
+53-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+54        android:name="android.hardware.screen.landscape"
+54-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+55        android:required="false" />
+55-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+56    <uses-feature
+56-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+57        android:name="android.hardware.wifi"
+57-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+58        android:required="false" />
+58-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+59
+60    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+61    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+62    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+63
+64    <application
+64-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:24:5-73:19
+65        android:name="cl.babyguardian.hub.BabyGuardianApp"
+65-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:25:9-40
+66        android:allowBackup="true"
+66-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:26:9-35
+67        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+67-->[androidx.core:core:1.12.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d8af0baa0ed5bdfe3c755956b74824ee/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+68        android:debuggable="true"
+69        android:extractNativeLibs="false"
+70        android:hardwareAccelerated="true"
+70-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:33:9-43
+71        android:icon="@drawable/ic_launcher"
+71-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:27:9-45
+72        android:label="@string/app_name"
+72-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:28:9-41
+73        android:largeHeap="true"
+73-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:34:9-33
+74        android:roundIcon="@drawable/ic_launcher"
+74-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:29:9-50
+75        android:supportsRtl="true"
+75-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:30:9-35
+76        android:theme="@style/Theme.BabyGuardianHub"
+76-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:31:9-53
+77        android:usesCleartextTraffic="true" >
+77-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:32:9-44
+78        <activity
+78-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:36:9-46:20
+79            android:name="cl.babyguardian.hub.ui.MainActivity"
+79-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:37:13-44
+80            android:exported="true"
+80-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:38:13-36
+81            android:launchMode="singleTask"
+81-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:39:13-44
+82            android:screenOrientation="landscape"
+82-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:40:13-50
+83            android:windowSoftInputMode="adjustResize" >
+83-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:41:13-55
+84            <intent-filter>
+84-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:42:13-45:29
+85                <action android:name="android.intent.action.MAIN" />
+85-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:43:17-69
+85-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:43:25-66
+86
+87                <category android:name="android.intent.category.LAUNCHER" />
+87-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:44:17-77
+87-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:44:27-74
+88            </intent-filter>
+89        </activity>
+90
+91        <!-- Baby Monitor Foreground Service -->
+92        <service
+92-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:49:9-53:44
+93            android:name="cl.babyguardian.hub.service.BabyMonitorService"
+93-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:50:13-55
+94            android:exported="false"
+94-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:51:13-37
+95            android:foregroundServiceType="microphone|camera"
+95-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:52:13-62
+96            android:stopWithTask="false" />
+96-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:53:13-41
+97
+98        <!-- FCM Service -->
+99        <service
+99-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:56:9-62:19
+100            android:name="cl.babyguardian.hub.service.BabyFirebaseMessagingService"
+100-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:57:13-65
+101            android:exported="false" >
+101-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:58:13-37
+102            <intent-filter>
+102-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:59:13-61:29
+103                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+103-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:17-78
+103-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:25-75
+104            </intent-filter>
+105        </service>
+106
+107        <!-- Boot receiver -->
+108        <receiver
+108-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:65:9-71:20
+109            android:name="cl.babyguardian.hub.receiver.BootReceiver"
+109-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:66:13-50
+110            android:exported="true" >
+110-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:67:13-36
+111            <intent-filter>
+111-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:68:13-70:29
+112                <action android:name="android.intent.action.BOOT_COMPLETED" />
+112-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:17-79
+112-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:25-76
+113            </intent-filter>
+114        </receiver>
+115
+116        <service
+116-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fa726e1a9ad11bad1b1552b704ab5cea/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:23:9-29:19
+117            android:name="com.google.firebase.components.ComponentDiscoveryService"
+117-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fa726e1a9ad11bad1b1552b704ab5cea/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:24:13-84
+118            android:directBootAware="true"
+118-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:32:13-43
+119            android:exported="false" >
+119-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fa726e1a9ad11bad1b1552b704ab5cea/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:25:13-37
+120            <meta-data
+120-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fa726e1a9ad11bad1b1552b704ab5cea/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:26:13-28:85
+121                android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingLegacyRegistrar"
+121-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fa726e1a9ad11bad1b1552b704ab5cea/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:27:17-129
+122                android:value="com.google.firebase.components.ComponentRegistrar" />
+122-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fa726e1a9ad11bad1b1552b704ab5cea/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:28:17-82
+123            <meta-data
+123-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:57:13-59:85
+124                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+124-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:58:17-122
+125                android:value="com.google.firebase.components.ComponentRegistrar" />
+125-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:59:17-82
+126            <meta-data
+126-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:60:13-62:85
+127                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+127-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:61:17-119
+128                android:value="com.google.firebase.components.ComponentRegistrar" />
+128-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:62:17-82
+129            <meta-data
+129-->[com.google.firebase:firebase-installations:17.2.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/bf6bebdb94cbbf255709639195dddec4/transformed/firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
+130                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+130-->[com.google.firebase:firebase-installations:17.2.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/bf6bebdb94cbbf255709639195dddec4/transformed/firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
+131                android:value="com.google.firebase.components.ComponentRegistrar" />
+131-->[com.google.firebase:firebase-installations:17.2.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/bf6bebdb94cbbf255709639195dddec4/transformed/firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
+132            <meta-data
+132-->[com.google.firebase:firebase-installations:17.2.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/bf6bebdb94cbbf255709639195dddec4/transformed/firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
+133                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+133-->[com.google.firebase:firebase-installations:17.2.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/bf6bebdb94cbbf255709639195dddec4/transformed/firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
+134                android:value="com.google.firebase.components.ComponentRegistrar" />
+134-->[com.google.firebase:firebase-installations:17.2.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/bf6bebdb94cbbf255709639195dddec4/transformed/firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
+135            <meta-data
+135-->[com.google.firebase:firebase-common-ktx:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ac566fdf3e469f08d0da20cd300d9ab2/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:12:13-14:85
+136                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+136-->[com.google.firebase:firebase-common-ktx:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ac566fdf3e469f08d0da20cd300d9ab2/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:13:17-116
+137                android:value="com.google.firebase.components.ComponentRegistrar" />
+137-->[com.google.firebase:firebase-common-ktx:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ac566fdf3e469f08d0da20cd300d9ab2/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:14:17-82
+138            <meta-data
+138-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:35:13-37:85
+139                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+139-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:36:17-109
+140                android:value="com.google.firebase.components.ComponentRegistrar" />
+140-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:37:17-82
+141            <meta-data
+141-->[com.google.firebase:firebase-datatransport:18.1.7] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/55ca18e96c74b91a1b0c5ce5155ec35e/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+142                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+142-->[com.google.firebase:firebase-datatransport:18.1.7] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/55ca18e96c74b91a1b0c5ce5155ec35e/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+143                android:value="com.google.firebase.components.ComponentRegistrar" />
+143-->[com.google.firebase:firebase-datatransport:18.1.7] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/55ca18e96c74b91a1b0c5ce5155ec35e/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+144        </service>
+145
+146        <provider
+146-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:29:9-37:20
+147            android:name="androidx.startup.InitializationProvider"
+147-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:30:13-67
+148            android:authorities="cl.babyguardian.hub.androidx-startup"
+148-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:31:13-68
+149            android:exported="false" >
+149-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:32:13-37
+150            <meta-data
+150-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:34:13-36:52
+151                android:name="androidx.work.WorkManagerInitializer"
+151-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:35:17-68
+152                android:value="androidx.startup" />
+152-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:36:17-49
+153            <meta-data
+153-->[androidx.emoji2:emoji2:1.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/cdf7928fdac5d9f684d3ee5c965d6d09/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+154                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+154-->[androidx.emoji2:emoji2:1.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/cdf7928fdac5d9f684d3ee5c965d6d09/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+155                android:value="androidx.startup" />
+155-->[androidx.emoji2:emoji2:1.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/cdf7928fdac5d9f684d3ee5c965d6d09/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+156            <meta-data
+156-->[androidx.lifecycle:lifecycle-process:2.7.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ef1bd13843c4a5fbe7b5816a8231adde/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+157                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+157-->[androidx.lifecycle:lifecycle-process:2.7.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ef1bd13843c4a5fbe7b5816a8231adde/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+158                android:value="androidx.startup" />
+158-->[androidx.lifecycle:lifecycle-process:2.7.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/ef1bd13843c4a5fbe7b5816a8231adde/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+159            <meta-data
+159-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+160                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+160-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+161                android:value="androidx.startup" />
+161-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+162        </provider>
+163
+164        <service
+164-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:39:9-45:35
+165            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+165-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:40:13-88
+166            android:directBootAware="false"
+166-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:41:13-44
+167            android:enabled="@bool/enable_system_alarm_service_default"
+167-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:42:13-72
+168            android:exported="false" />
+168-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:43:13-37
+169        <service
+169-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:46:9-52:35
+170            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+170-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:47:13-84
+171            android:directBootAware="false"
+171-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:48:13-44
+172            android:enabled="@bool/enable_system_job_service_default"
+172-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:49:13-70
+173            android:exported="true"
+173-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:50:13-36
+174            android:permission="android.permission.BIND_JOB_SERVICE" />
+174-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:51:13-69
+175        <service
+175-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:53:9-59:35
+176            android:name="androidx.work.impl.foreground.SystemForegroundService"
+176-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:54:13-81
+177            android:directBootAware="false"
+177-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:55:13-44
+178            android:enabled="@bool/enable_system_foreground_service_default"
+178-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:56:13-77
+179            android:exported="false" />
+179-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:57:13-37
+180
+181        <receiver
+181-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:61:9-66:35
+182            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+182-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:62:13-88
+183            android:directBootAware="false"
+183-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:63:13-44
+184            android:enabled="true"
+184-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:64:13-35
+185            android:exported="false" />
+185-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:65:13-37
+186        <receiver
+186-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:67:9-77:20
+187            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+187-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:68:13-106
+188            android:directBootAware="false"
+188-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:69:13-44
+189            android:enabled="false"
+189-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:70:13-36
+190            android:exported="false" >
+190-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:71:13-37
+191            <intent-filter>
+191-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:73:13-76:29
+192                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+192-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:17-87
+192-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:25-84
+193                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+193-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:17-90
+193-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:25-87
+194            </intent-filter>
+195        </receiver>
+196        <receiver
+196-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:78:9-88:20
+197            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+197-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:79:13-104
+198            android:directBootAware="false"
+198-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:80:13-44
+199            android:enabled="false"
+199-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:81:13-36
+200            android:exported="false" >
+200-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:82:13-37
+201            <intent-filter>
+201-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:84:13-87:29
+202                <action android:name="android.intent.action.BATTERY_OKAY" />
+202-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:17-77
+202-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:25-74
+203                <action android:name="android.intent.action.BATTERY_LOW" />
+203-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:17-76
+203-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:25-73
+204            </intent-filter>
+205        </receiver>
+206        <receiver
+206-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:89:9-99:20
+207            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+207-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:90:13-104
+208            android:directBootAware="false"
+208-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:91:13-44
+209            android:enabled="false"
+209-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:92:13-36
+210            android:exported="false" >
+210-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:93:13-37
+211            <intent-filter>
+211-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:95:13-98:29
+212                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+212-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:17-83
+212-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:25-80
+213                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+213-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:17-82
+213-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:25-79
+214            </intent-filter>
+215        </receiver>
+216        <receiver
+216-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:100:9-109:20
+217            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+217-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:101:13-103
+218            android:directBootAware="false"
+218-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:102:13-44
+219            android:enabled="false"
+219-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:103:13-36
+220            android:exported="false" >
+220-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:104:13-37
+221            <intent-filter>
+221-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:106:13-108:29
+222                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+222-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:17-79
+222-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:25-76
+223            </intent-filter>
+224        </receiver>
+225        <receiver
+225-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:110:9-121:20
+226            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+226-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:111:13-88
+227            android:directBootAware="false"
+227-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:112:13-44
+228            android:enabled="false"
+228-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:113:13-36
+229            android:exported="false" >
+229-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:114:13-37
+230            <intent-filter>
+230-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:116:13-120:29
+231                <action android:name="android.intent.action.BOOT_COMPLETED" />
+231-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:17-79
+231-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:25-76
+232                <action android:name="android.intent.action.TIME_SET" />
+232-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:17-73
+232-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:25-70
+233                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+233-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:17-81
+233-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:25-78
+234            </intent-filter>
+235        </receiver>
+236        <receiver
+236-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:122:9-131:20
+237            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+237-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:123:13-99
+238            android:directBootAware="false"
+238-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:124:13-44
+239            android:enabled="@bool/enable_system_alarm_service_default"
+239-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:125:13-72
+240            android:exported="false" >
+240-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:126:13-37
+241            <intent-filter>
+241-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:128:13-130:29
+242                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+242-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:17-98
+242-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:25-95
+243            </intent-filter>
+244        </receiver>
+245        <receiver
+245-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:132:9-142:20
+246            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+246-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:133:13-78
+247            android:directBootAware="false"
+247-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:134:13-44
+248            android:enabled="true"
+248-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:135:13-35
+249            android:exported="true"
+249-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:136:13-36
+250            android:permission="android.permission.DUMP" >
+250-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:137:13-57
+251            <intent-filter>
+251-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:139:13-141:29
+252                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+252-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:17-88
+252-->[androidx.work:work-runtime:2.9.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/8433372c4a93d3a31ccbad853bd7268c/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:25-85
+253            </intent-filter>
+254        </receiver>
+255
+256        <service
+256-->[androidx.room:room-runtime:2.6.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/27a5ae4ed883a30b28b317148f39cbe5/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+257            android:name="androidx.room.MultiInstanceInvalidationService"
+257-->[androidx.room:room-runtime:2.6.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/27a5ae4ed883a30b28b317148f39cbe5/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+258            android:directBootAware="true"
+258-->[androidx.room:room-runtime:2.6.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/27a5ae4ed883a30b28b317148f39cbe5/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+259            android:exported="false" />
+259-->[androidx.room:room-runtime:2.6.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/27a5ae4ed883a30b28b317148f39cbe5/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+260
+261        <receiver
+261-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:29:9-40:20
+262            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+262-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:30:13-78
+263            android:exported="true"
+263-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:31:13-36
+264            android:permission="com.google.android.c2dm.permission.SEND" >
+264-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:32:13-73
+265            <intent-filter>
+265-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:33:13-35:29
+266                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+266-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:34:17-81
+266-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:34:25-78
+267            </intent-filter>
+268
+269            <meta-data
+269-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:37:13-39:40
+270                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+270-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:38:17-92
+271                android:value="true" />
+271-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:39:17-37
+272        </receiver>
+273        <!--
+274             FirebaseMessagingService performs security checks at runtime,
+275             but set to not exported to explicitly avoid allowing another app to call it.
+276        -->
+277        <service
+277-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:46:9-53:19
+278            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+278-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:47:13-82
+279            android:directBootAware="true"
+279-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:48:13-43
+280            android:exported="false" >
+280-->[com.google.firebase:firebase-messaging:23.4.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b63eccd99437d7a87ec573d377b6b947/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:49:13-37
+281            <intent-filter android:priority="-500" >
+281-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:59:13-61:29
+282                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+282-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:17-78
+282-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:25-75
+283            </intent-filter>
+284        </service>
+285
+286        <activity
+286-->[androidx.compose.ui:ui-tooling-android:1.6.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fc315b310a272404262bd4f0d147337e/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
+287            android:name="androidx.compose.ui.tooling.PreviewActivity"
+287-->[androidx.compose.ui:ui-tooling-android:1.6.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fc315b310a272404262bd4f0d147337e/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
+288            android:exported="true" />
+288-->[androidx.compose.ui:ui-tooling-android:1.6.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/fc315b310a272404262bd4f0d147337e/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
+289
+290        <service
+290-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/46ce61963f95f32dd886716342bb7eb9/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:9:9-15:19
+291            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+291-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/46ce61963f95f32dd886716342bb7eb9/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:10:13-91
+292            android:directBootAware="true"
+292-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:17:13-43
+293            android:exported="false" >
+293-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/46ce61963f95f32dd886716342bb7eb9/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:11:13-37
+294            <meta-data
+294-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/46ce61963f95f32dd886716342bb7eb9/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:12:13-14:85
+295                android:name="com.google.firebase.components:com.google.mlkit.vision.face.internal.FaceRegistrar"
+295-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/46ce61963f95f32dd886716342bb7eb9/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:13:17-114
+296                android:value="com.google.firebase.components.ComponentRegistrar" />
+296-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/46ce61963f95f32dd886716342bb7eb9/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:14:17-82
+297            <meta-data
+297-->[com.google.mlkit:vision-common:17.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b0292d1e3ae11db8c1c0e05cab82746a/transformed/vision-common-17.1.0/AndroidManifest.xml:12:13-14:85
+298                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+298-->[com.google.mlkit:vision-common:17.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b0292d1e3ae11db8c1c0e05cab82746a/transformed/vision-common-17.1.0/AndroidManifest.xml:13:17-124
+299                android:value="com.google.firebase.components.ComponentRegistrar" />
+299-->[com.google.mlkit:vision-common:17.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/b0292d1e3ae11db8c1c0e05cab82746a/transformed/vision-common-17.1.0/AndroidManifest.xml:14:17-82
+300            <meta-data
+300-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:20:13-22:85
+301                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+301-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:21:17-120
+302                android:value="com.google.firebase.components.ComponentRegistrar" />
+302-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:22:17-82
+303        </service>
+304
+305        <provider
+305-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:9:9-13:38
+306            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+306-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:10:13-78
+307            android:authorities="cl.babyguardian.hub.mlkitinitprovider"
+307-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:11:13-69
+308            android:exported="false"
+308-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:12:13-37
+309            android:initOrder="99" />
+309-->[com.google.mlkit:common:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/aaf1d45873a733c45db34e554f8d8598/transformed/common-18.1.0/AndroidManifest.xml:13:13-35
+310
+311        <activity
+311-->[com.google.android.gms:play-services-base:18.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/4e5dd9baa0368108611ed39d4bc1ea0c/transformed/play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+312            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+312-->[com.google.android.gms:play-services-base:18.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/4e5dd9baa0368108611ed39d4bc1ea0c/transformed/play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+313            android:exported="false"
+313-->[com.google.android.gms:play-services-base:18.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/4e5dd9baa0368108611ed39d4bc1ea0c/transformed/play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+314            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+314-->[com.google.android.gms:play-services-base:18.0.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/4e5dd9baa0368108611ed39d4bc1ea0c/transformed/play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+315
+316        <provider
+316-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
+317            android:name="com.google.firebase.provider.FirebaseInitProvider"
+317-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:24:13-77
+318            android:authorities="cl.babyguardian.hub.firebaseinitprovider"
+318-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:25:13-72
+319            android:directBootAware="true"
+319-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:26:13-43
+320            android:exported="false"
+320-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:27:13-37
+321            android:initOrder="100" />
+321-->[com.google.firebase:firebase-common:20.4.2] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/28bb90f9ed2ebbf8de286b9989295cb8/transformed/firebase-common-20.4.2/AndroidManifest.xml:28:13-36
+322        <!--
+323        Service for holding metadata. Cannot be instantiated.
+324        Metadata will be merged from other manifests.
+325        -->
+326        <service
+326-->[androidx.camera:camera-core:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/508b217b9ea39cef632ae1c51672c0ab/transformed/camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+327            android:name="androidx.camera.core.impl.MetadataHolderService"
+327-->[androidx.camera:camera-core:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/508b217b9ea39cef632ae1c51672c0ab/transformed/camera-core-1.3.1/AndroidManifest.xml:30:13-75
+328            android:enabled="false"
+328-->[androidx.camera:camera-core:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/508b217b9ea39cef632ae1c51672c0ab/transformed/camera-core-1.3.1/AndroidManifest.xml:31:13-36
+329            android:exported="false" >
+329-->[androidx.camera:camera-core:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/508b217b9ea39cef632ae1c51672c0ab/transformed/camera-core-1.3.1/AndroidManifest.xml:32:13-37
+330            <meta-data
+330-->[androidx.camera:camera-camera2:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/551fb31d1451517e107e038cf639be1e/transformed/camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
+331                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+331-->[androidx.camera:camera-camera2:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/551fb31d1451517e107e038cf639be1e/transformed/camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
+332                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+332-->[androidx.camera:camera-camera2:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/551fb31d1451517e107e038cf639be1e/transformed/camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
+333        </service>
+334
+335        <meta-data
+335-->[com.google.android.gms:play-services-basement:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/60bfa40a64c2fde5cfa9e16be1a0c2e1/transformed/play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+336            android:name="com.google.android.gms.version"
+336-->[com.google.android.gms:play-services-basement:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/60bfa40a64c2fde5cfa9e16be1a0c2e1/transformed/play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+337            android:value="@integer/google_play_services_version" />
+337-->[com.google.android.gms:play-services-basement:18.1.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/60bfa40a64c2fde5cfa9e16be1a0c2e1/transformed/play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+338
+339        <activity
+339-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+340            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+340-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
+341            android:clearTaskOnLaunch="true"
+341-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+342            android:screenOrientation="sensorLandscape"
+342-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+343            android:stateNotNeeded="true"
+343-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+344            android:theme="@style/zxing_CaptureTheme"
+344-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+345            android:windowSoftInputMode="stateAlwaysHidden" />
+345-->[com.journeyapps:zxing-android-embedded:4.3.0] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/e5b5394cc6b6b28acb49d5b85c0b083c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+346
+347        <service
+347-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d3680017baee33360e0816131bc5e0fb/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+348            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+348-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d3680017baee33360e0816131bc5e0fb/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+349            android:exported="false" >
+349-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d3680017baee33360e0816131bc5e0fb/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+350            <meta-data
+350-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d3680017baee33360e0816131bc5e0fb/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+351                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+351-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d3680017baee33360e0816131bc5e0fb/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+352                android:value="cct" />
+352-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/d3680017baee33360e0816131bc5e0fb/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+353        </service>
+354        <service
+354-->[com.google.android.datatransport:transport-runtime:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/c0fe7329620429c789ce099220fa5486/transformed/transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+355            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+355-->[com.google.android.datatransport:transport-runtime:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/c0fe7329620429c789ce099220fa5486/transformed/transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+356            android:exported="false"
+356-->[com.google.android.datatransport:transport-runtime:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/c0fe7329620429c789ce099220fa5486/transformed/transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+357            android:permission="android.permission.BIND_JOB_SERVICE" >
+357-->[com.google.android.datatransport:transport-runtime:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/c0fe7329620429c789ce099220fa5486/transformed/transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+358        </service>
+359
+360        <receiver
+360-->[com.google.android.datatransport:transport-runtime:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/c0fe7329620429c789ce099220fa5486/transformed/transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+361            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+361-->[com.google.android.datatransport:transport-runtime:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/c0fe7329620429c789ce099220fa5486/transformed/transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+362            android:exported="false" />
+362-->[com.google.android.datatransport:transport-runtime:3.1.8] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/c0fe7329620429c789ce099220fa5486/transformed/transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+363        <receiver
+363-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+364            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+364-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+365            android:directBootAware="false"
+365-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+366            android:enabled="true"
+366-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+367            android:exported="true"
+367-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+368            android:permission="android.permission.DUMP" >
+368-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+369            <intent-filter>
+369-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+370                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+370-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+370-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+371            </intent-filter>
+372            <intent-filter>
+372-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+373                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+373-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+373-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+374            </intent-filter>
+375            <intent-filter>
+375-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+376                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+376-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+376-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+377            </intent-filter>
+378            <intent-filter>
+378-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+379                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+379-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+379-->[androidx.profileinstaller:profileinstaller:1.3.1] /private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/57556d72052d583b742c7a4a401dc2b8/gradle/caches/transforms-3/81bc16faf418af6d226460fdabe10d5b/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+380            </intent-filter>
+381        </receiver>
+382    </application>
+383
+384</manifest>
