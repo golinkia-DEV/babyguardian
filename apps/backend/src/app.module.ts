@@ -10,6 +10,7 @@ import { VaccinesModule } from './vaccines/vaccines.module';
 import { HomesModule } from './homes/homes.module';
 import { DevicesModule } from './devices/devices.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { CamerasModule } from './cameras/cameras.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -37,6 +38,7 @@ import configuration from './config/configuration';
     VaccinesModule,
     HomesModule,
     DevicesModule,
+    CamerasModule,
     NotificationsModule,
   ],
 })

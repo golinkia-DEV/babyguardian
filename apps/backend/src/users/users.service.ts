@@ -23,6 +23,22 @@ export class UsersService {
     return this.usersRepository.save(user);
   }
 
+  async createFromGoogle(data: {
+    email: string;
+    fullName: string;
+    googleId: string;
+    avatarUrl?: string;
+  }): Promise<User> {
+    const user = this.usersRepository.create({
+      email: data.email,
+      fullName: data.fullName,
+      avatarUrl: data.avatarUrl,
+      // Keep a non-empty password hash to satisfy DB constraints.
+      passwordHash: `google_oauth_${data.googleId}`,
+    });
+    return this.usersRepository.save(user);
+  }
+
   async update(id: string, data: Partial<User>): Promise<User> {
     await this.usersRepository.update(id, data);
     const user = await this.findById(id);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity, ScrollView,
   TextInput, useColorScheme, Alert,
@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../theme/colors';
 import { useFeedingStore } from '../../store/feedingStore';
+import { useBabyStore } from '../../store/babyStore';
 
 type FeedingType = 'breastfeeding' | 'formula' | 'mixed' | 'solids';
 type BreastSide = 'left' | 'right' | 'both';
@@ -23,7 +24,8 @@ export const FeedingScreen: React.FC = () => {
   const navigation = useNavigation();
   const isDark = useColorScheme() === 'dark';
   const theme = isDark ? Colors.dark : Colors.light;
-  const { addFeeding, recentFeedings } = useFeedingStore();
+  const { addFeeding, recentFeedings, loadRecentFeedings } = useFeedingStore();
+  const { baby } = useBabyStore();
 
   const [feedingType, setFeedingType] = useState<FeedingType>('breastfeeding');
   const [durationMinutes, setDurationMinutes] = useState(15);
@@ -32,7 +34,18 @@ export const FeedingScreen: React.FC = () => {
   const [notes, setNotes] = useState('');
   const [saving, setSaving] = useState(false);
 
+  useEffect(() => {
+    if (baby?.id) {
+      loadRecentFeedings(baby.id).catch(() => undefined);
+    }
+  }, [baby?.id, loadRecentFeedings]);
+
   const handleSave = async () => {
+    if (!baby?.id) {
+      Alert.alert('Falta bebé', 'Debes seleccionar un bebé antes de registrar una toma.');
+      return;
+    }
+
     setSaving(true);
     try {
       await addFeeding({

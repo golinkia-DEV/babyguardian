@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import { feedingApi } from '../api/feedingApi';
+import { useBabyStore } from './babyStore';
 
 interface FeedingRecord {
   id: string;
@@ -30,12 +32,30 @@ export const useFeedingStore = create<FeedingState>((set, get) => ({
   recentFeedings: [],
 
   addFeeding: async (data) => {
-    // POST /api/v1/feeding
-    const record: FeedingRecord = { id: Date.now().toString(), ...data, timeAgo: 'Ahora' };
+    const babyId = useBabyStore.getState().baby?.id;
+    if (!babyId) {
+      throw new Error('No hay bebé seleccionado para registrar la toma');
+    }
+
+    const created = await feedingApi.createFeeding({
+      ...data,
+      babyId,
+    });
+
+    const record: FeedingRecord = {
+      ...created,
+      timeAgo: getTimeAgo(created.startTime),
+    };
     set({ recentFeedings: [record, ...get().recentFeedings].slice(0, 20) });
   },
 
-  loadRecentFeedings: async (_babyId) => {
-    // GET /api/v1/feeding?babyId=...&limit=10
+  loadRecentFeedings: async (babyId) => {
+    const feedings = await feedingApi.getFeedingsByBaby(babyId, 10);
+    set({
+      recentFeedings: feedings.map((f) => ({
+        ...f,
+        timeAgo: getTimeAgo(f.startTime),
+      })),
+    });
   },
 }));

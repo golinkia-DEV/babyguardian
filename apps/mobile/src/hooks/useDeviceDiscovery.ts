@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { devicesApi } from '../api/devicesApi';
 
 export interface DiscoveredCamera {
   ip: string;
@@ -28,33 +29,33 @@ export function useDeviceDiscovery() {
   const [lights, setLights] = useState<DiscoveredLight[]>([]);
   const [scanning, setScanning] = useState(false);
 
-  const scanForCameras = useCallback(async () => {
+  const scanForCameras = useCallback(async (): Promise<DiscoveredCamera[]> => {
     setScanning(true);
     setCameras([]);
     try {
-      // In production: call hub API at local IP for network scan
-      // const response = await hubApi.scanCameras();
-      // For demo/dev, simulate discovery
-      await new Promise(r => setTimeout(r, 3000));
-      setCameras([
-        { ip: '192.168.1.100', port: 554, brand: 'EZVIZ', model: 'C6N', protocol: 'rtsp' },
-        { ip: '192.168.1.101', port: 554, brand: 'Tapo', model: 'C200', protocol: 'onvif' },
-        { ip: '192.168.1.102', port: 80, brand: 'Hikvision', protocol: 'onvif' },
-      ]);
+      const discovered = await devicesApi.discover({ deviceType: 'camera' });
+      setCameras(discovered);
+      return discovered;
+    } catch {
+      return [];
     } finally {
       setScanning(false);
     }
   }, []);
 
-  const scanForLights = useCallback(async () => {
+  const scanForLights = useCallback(async (): Promise<DiscoveredLight[]> => {
     setScanning(true);
     setLights([]);
     try {
-      await new Promise(r => setTimeout(r, 2500));
-      setLights([
-        { ip: '192.168.1.110', port: 55443, brand: 'Yeelight', model: 'RGB Bulb', protocol: 'yeelight', capabilities: ['on_off', 'brightness', 'color'] },
-        { ip: '192.168.1.111', port: 80, brand: 'Philips Hue', model: 'Bridge', protocol: 'http', capabilities: ['on_off', 'brightness', 'color', 'scenes'] },
-      ]);
+      const discoveredRaw = await devicesApi.discover({ deviceType: 'light' });
+      const discovered = discoveredRaw.map((d) => ({
+        ...d,
+        capabilities: ['on_off', 'brightness'],
+      }));
+      setLights(discovered);
+      return discovered;
+    } catch {
+      return [];
     } finally {
       setScanning(false);
     }

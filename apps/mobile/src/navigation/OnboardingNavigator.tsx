@@ -6,6 +6,7 @@ import { AccountOwnershipScreen } from '../screens/onboarding/AccountOwnershipSc
 import { CreateHomeScreen } from '../screens/onboarding/CreateHomeScreen';
 import { LinkTabletScreen } from '../screens/onboarding/LinkTabletScreen';
 import { SetupAlertsScreen } from '../screens/onboarding/SetupAlertsScreen';
+import { SetupDevicesScreen } from '../screens/onboarding/SetupDevicesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ export const OnboardingNavigator: React.FC = () => (
     <Stack.Screen name="AccountOwnership" component={AccountOwnershipScreen} />
     <Stack.Screen name="CreateHome" component={CreateHomeScreen} />
     <Stack.Screen name="LinkTablet" component={LinkTabletScreen} />
-    <Stack.Screen name="SetupDevices" component={() => null} />
+    <Stack.Screen name="SetupDevices" component={SetupDevicesScreen} />
     <Stack.Screen name="SetupAlerts" component={SetupAlertsScreen} />
   </Stack.Navigator>
 );

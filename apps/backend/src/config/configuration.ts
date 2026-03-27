@@ -16,4 +16,7 @@ export default () => ({
   fcm: {
     serverKey: process.env.FCM_SERVER_KEY || '',
   },
+  google: {
+    clientId: process.env.GOOGLE_CLIENT_ID || '',
+  },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity,
   FlatList, useColorScheme,
@@ -7,36 +7,23 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../theme/colors';
-
-interface Vaccine {
-  id: string;
-  name: string;
-  ageMonths: number;
-  status: 'applied' | 'pending' | 'upcoming';
-  scheduledDate?: string;
-  appliedDate?: string;
-}
-
-const MOCK_VACCINES: Vaccine[] = [
-  { id: '1', name: 'BCG', ageMonths: 0, status: 'applied', appliedDate: '2025-01-15' },
-  { id: '2', name: 'Hepatitis B', ageMonths: 0, status: 'applied', appliedDate: '2025-01-15' },
-  { id: '3', name: 'Hexavalente (1ª)', ageMonths: 2, status: 'applied', appliedDate: '2025-03-15' },
-  { id: '4', name: 'Neumocócica 13V (1ª)', ageMonths: 2, status: 'applied', appliedDate: '2025-03-15' },
-  { id: '5', name: 'Hexavalente (2ª)', ageMonths: 4, status: 'upcoming', scheduledDate: '2025-05-15' },
-  { id: '6', name: 'Neumocócica 13V (2ª)', ageMonths: 4, status: 'upcoming', scheduledDate: '2025-05-15' },
-  { id: '7', name: 'Hexavalente (3ª)', ageMonths: 6, status: 'pending' },
-  { id: '8', name: 'Influenza', ageMonths: 6, status: 'pending' },
-  { id: '9', name: 'SRP', ageMonths: 12, status: 'pending' },
-  { id: '10', name: 'Varicela', ageMonths: 12, status: 'pending' },
-];
+import { useVaccinesStore } from '../../store/vaccinesStore';
 
 export const VaccinesScreen: React.FC = () => {
   const navigation = useNavigation();
   const isDark = useColorScheme() === 'dark';
   const theme = isDark ? Colors.dark : Colors.light;
   const [filter, setFilter] = useState<'all' | 'applied' | 'upcoming' | 'pending'>('all');
+  const { vaccines, loadVaccines, markAsApplied } = useVaccinesStore();
 
-  const filtered = MOCK_VACCINES.filter(v => filter === 'all' || v.status === filter);
+  useEffect(() => {
+    loadVaccines().catch(() => undefined);
+  }, [loadVaccines]);
+
+  const filtered = useMemo(
+    () => vaccines.filter(v => filter === 'all' || v.status === filter),
+    [vaccines, filter],
+  );
 
   const statusConfig = {
     applied: { color: Colors.calmGreen, icon: 'check-circle', label: 'Aplicada' },
@@ -45,9 +32,9 @@ export const VaccinesScreen: React.FC = () => {
   };
 
   const counts = {
-    applied: MOCK_VACCINES.filter(v => v.status === 'applied').length,
-    upcoming: MOCK_VACCINES.filter(v => v.status === 'upcoming').length,
-    pending: MOCK_VACCINES.filter(v => v.status === 'pending').length,
+    applied: vaccines.filter(v => v.status === 'applied').length,
+    upcoming: vaccines.filter(v => v.status === 'upcoming').length,
+    pending: vaccines.filter(v => v.status === 'pending').length,
   };
 
   return (
@@ -102,9 +89,8 @@ export const VaccinesScreen: React.FC = () => {
                 <Icon name={cfg.icon} size={24} color={cfg.color} />
               </View>
               <View style={styles.vaccineInfo}>
-                <Text style={[styles.vaccineName, { color: theme.textPrimary }]}>{item.name}</Text>
+                <Text style={[styles.vaccineName, { color: theme.textPrimary }]}>{item.vaccineName}</Text>
                 <Text style={[styles.vaccineAge, { color: theme.textSecondary }]}>
-                  {item.ageMonths === 0 ? 'Recién nacido' : `${item.ageMonths} meses`}
                   {item.appliedDate ? ` · Aplicada ${item.appliedDate}` : ''}
                   {item.scheduledDate ? ` · ${item.scheduledDate}` : ''}
                 </Text>
@@ -113,7 +99,10 @@ export const VaccinesScreen: React.FC = () => {
                 <Text style={[styles.statusText, { color: cfg.color }]}>{cfg.label}</Text>
               </View>
               {item.status === 'pending' && (
-                <TouchableOpacity style={styles.markBtn}>
+                <TouchableOpacity
+                  style={styles.markBtn}
+                  onPress={() => markAsApplied(item.id).catch(() => undefined)}
+                >
                   <Icon name="add-circle-outline" size={20} color={Colors.turquoise} />
                 </TouchableOpacity>
               )}

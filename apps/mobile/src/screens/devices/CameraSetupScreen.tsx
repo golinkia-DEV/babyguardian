@@ -8,6 +8,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../theme/colors';
 import { useCameraStore } from '../../store/cameraStore';
+import { devicesApi } from '../../api/devicesApi';
 
 const CAMERA_BRANDS = ['EZVIZ', 'Tapo', 'Hikvision', 'Reolink', 'Dahua', 'Amcrest', 'Genérica RTSP'];
 
@@ -41,8 +42,10 @@ export const CameraSetupScreen: React.FC = () => {
     setLoading(true);
     setTestResult('idle');
     try {
-      // Simulate RTSP test
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const subnet = ip.split('.').slice(0, 3).join('.');
+      const discovered = await devicesApi.discover({ deviceType: 'camera', subnet });
+      const exists = discovered.some((d) => d.ip === ip && Number(d.port) === Number(port));
+      if (!exists) throw new Error('Camera not reachable');
       setTestResult('ok');
     } catch {
       setTestResult('fail');
