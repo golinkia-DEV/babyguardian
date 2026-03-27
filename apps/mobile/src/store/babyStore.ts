@@ -5,7 +5,9 @@ export interface Baby {
   name: string;
   birthDate: string;
   gender: 'male' | 'female' | 'other';
+  country?: string;
   photoUrl?: string;
+  medicalNotes?: string;
 }
 
 interface BabyStore {
