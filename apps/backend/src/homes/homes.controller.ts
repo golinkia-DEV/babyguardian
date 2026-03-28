@@ -1,13 +1,13 @@
 import { Controller, Get, Post, Patch, Body, Param, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { AppJwtAuthGuard } from '../auth/app-jwt-auth.guard';
 import { HomesService } from './homes.service';
 import { CreateHomeDto } from './dto/create-home.dto';
 import { UpdateHomeDto } from './dto/update-home.dto';
 
 @ApiTags('homes')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AppJwtAuthGuard)
 @Controller('homes')
 export class HomesController {
   constructor(private homesService: HomesService) {}

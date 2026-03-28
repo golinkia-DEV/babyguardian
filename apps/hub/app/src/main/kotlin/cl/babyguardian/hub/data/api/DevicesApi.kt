@@ -9,7 +9,7 @@ import retrofit2.http.POST
 interface DevicesApi {
     @POST("devices/pairing-confirm")
     suspend fun confirmPairing(
-        @Header("Authorization") authorization: String,
+        @Header("Authorization") authorization: String?,
         @Body body: PairingConfirmRequest,
     ): PairingConfirmResponse
 }

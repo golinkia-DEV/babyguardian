@@ -1,12 +1,12 @@
 import { Controller, Get, Post, Delete, Body, Param, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { AppJwtAuthGuard } from '../auth/app-jwt-auth.guard';
 import { CamerasService } from './cameras.service';
 import { CreateCameraDto } from './dto/create-camera.dto';
 
 @ApiTags('cameras')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AppJwtAuthGuard)
 @Controller('cameras')
 export class CamerasController {
   constructor(private camerasService: CamerasService) {}

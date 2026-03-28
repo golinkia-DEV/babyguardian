@@ -2,6 +2,7 @@ package cl.babyguardian.hub.ui.screens.pairing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import cl.babyguardian.hub.BuildConfig
 import cl.babyguardian.hub.data.api.DevicesApi
 import cl.babyguardian.hub.data.local.HubPreferencesRepository
 import cl.babyguardian.hub.data.model.PairingConfirmRequest
@@ -42,13 +43,18 @@ class PairingViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, error = null) }
             try {
-                val token = hubPrefs.getAccessToken()
-                    ?: run {
-                        _uiState.update { it.copy(isLoading = false, error = "Sesión no válida") }
-                        return@launch
-                    }
+                val authHeader: String? = if (BuildConfig.DEV_SKIP_AUTH) {
+                    null
+                } else {
+                    val token = hubPrefs.getAccessToken()
+                        ?: run {
+                            _uiState.update { it.copy(isLoading = false, error = "Sesión no válida") }
+                            return@launch
+                        }
+                    "Bearer $token"
+                }
                 val res = devicesApi.confirmPairing(
-                    "Bearer $token",
+                    authHeader,
                     PairingConfirmRequest(code),
                 )
                 if (res.success && !res.homeId.isNullOrBlank()) {

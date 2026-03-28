@@ -73,6 +73,7 @@
         android:largeHeap="true"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.BabyGuardianHub"
         android:usesCleartextTraffic="true" >
         <activity

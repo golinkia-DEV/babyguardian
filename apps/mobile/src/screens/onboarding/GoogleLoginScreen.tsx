@@ -52,10 +52,10 @@ export const GoogleLoginScreen: React.FC = () => {
         ) : (
           <>
             <Text style={[styles.title, { color: theme.textPrimary }]}>
-              Conecta tu cuenta Google
+              Registro o acceso con Google
             </Text>
             <Text style={[styles.subtitle, { color: theme.textSecondary }]}>
-              Usaremos tu cuenta para sincronizar tus dispositivos y enviarte alertas importantes.
+              Si aún no tienes cuenta, la creamos con tu cuenta Google. Así sincronizamos dispositivos y alertas.
             </Text>
             <TouchableOpacity
               style={styles.googleBtn}

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BabyGuardian Hub</string>
+    <!-- Mismo ID que GOOGLE_CLIENT_ID del backend (cliente OAuth tipo &quot;Web&quot; en Google Cloud). -->
+    <string name="default_web_client_id" translatable="false">YOUR_WEB_CLIENT_ID.apps.googleusercontent.com</string>
+    <string name="login_with_google">Continuar con Google</string>
+    <string name="login_or_divider">o</string>
+    <string name="login_google_hint">Registro o acceso con la misma cuenta que en el móvil.</string>
 </resources>

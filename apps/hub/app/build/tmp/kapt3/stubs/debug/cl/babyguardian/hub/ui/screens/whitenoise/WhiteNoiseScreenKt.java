@@ -4,8 +4,8 @@ package cl.babyguardian.hub.ui.screens.whitenoise;
 @kotlin.OptIn(markerClass = {androidx.compose.material3.ExperimentalMaterial3Api.class})
 public final class WhiteNoiseScreenKt {
     
-    @androidx.compose.runtime.Composable
-    public static final void WhiteNoiseScreen(@org.jetbrains.annotations.NotNull
+    @androidx.compose.runtime.Composable()
+    public static final void WhiteNoiseScreen(@org.jetbrains.annotations.NotNull()
     kotlin.jvm.functions.Function0<kotlin.Unit> onBack) {
     }
 }

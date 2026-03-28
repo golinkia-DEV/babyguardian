@@ -11,4 +11,6 @@ public final class BuildConfig {
   public static final String VERSION_NAME = "1.0.0";
   // Field from build type: debug
   public static final String API_BASE_URL = "http://10.0.2.2:3000/api/v1/";
+  // Field from build type: debug
+  public static final boolean DEV_SKIP_AUTH = false;
 }

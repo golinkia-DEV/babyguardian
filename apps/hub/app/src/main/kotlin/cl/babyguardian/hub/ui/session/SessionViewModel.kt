@@ -2,6 +2,7 @@ package cl.babyguardian.hub.ui.session
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import cl.babyguardian.hub.BuildConfig
 import cl.babyguardian.hub.data.local.HubPreferencesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,7 +16,7 @@ class SessionViewModel @Inject constructor(
 ) : ViewModel() {
 
     val session = hubPrefs.snapshot
-        .map { HubSession.from(it) }
+        .map { HubSession.from(it, BuildConfig.DEV_SKIP_AUTH) }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),

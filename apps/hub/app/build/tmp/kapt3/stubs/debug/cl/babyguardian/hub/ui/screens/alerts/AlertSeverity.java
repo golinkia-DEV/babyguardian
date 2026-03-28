@@ -9,7 +9,7 @@ public enum AlertSeverity {
     AlertSeverity() {
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static kotlin.enums.EnumEntries<cl.babyguardian.hub.ui.screens.alerts.AlertSeverity> getEntries() {
         return null;
     }

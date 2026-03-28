@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Patch, Body, Param, Query, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { AppJwtAuthGuard } from '../auth/app-jwt-auth.guard';
 import { VaccinesService } from './vaccines.service';
 import { RecordVaccineDto } from './dto/record-vaccine.dto';
 import { GenerateScheduleDto } from './dto/generate-schedule.dto';
@@ -8,7 +8,7 @@ import { UpdateVaccineStatusDto } from './dto/update-vaccine-status.dto';
 
 @ApiTags('vaccines')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AppJwtAuthGuard)
 @Controller('vaccines')
 export class VaccinesController {
   constructor(private vaccinesService: VaccinesService) {}

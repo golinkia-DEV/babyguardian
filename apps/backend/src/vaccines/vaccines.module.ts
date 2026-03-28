@@ -5,9 +5,10 @@ import { VaccinesController } from './vaccines.controller';
 import { VaccineCatalog } from './vaccine-catalog.entity';
 import { BabyVaccine } from './baby-vaccine.entity';
 import { BabiesModule } from '../babies/babies.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([VaccineCatalog, BabyVaccine]), BabiesModule],
+  imports: [TypeOrmModule.forFeature([VaccineCatalog, BabyVaccine]), BabiesModule, AuthModule],
   controllers: [VaccinesController],
   providers: [VaccinesService],
   exports: [VaccinesService],

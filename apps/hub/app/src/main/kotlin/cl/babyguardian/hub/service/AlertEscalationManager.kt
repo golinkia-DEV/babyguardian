@@ -1,5 +1,6 @@
 package cl.babyguardian.hub.service
 
+import cl.babyguardian.hub.BuildConfig
 import cl.babyguardian.hub.data.api.EventsApi
 import cl.babyguardian.hub.data.local.HubPreferencesRepository
 import cl.babyguardian.hub.data.model.CreateEventRequest
@@ -25,13 +26,15 @@ class AlertEscalationManager @Inject constructor(
         val now = System.currentTimeMillis()
         if (now - lastCryAlertTime < cryDebounceMs) return
 
-        val token = hubPrefs.getAccessToken() ?: return
         val homeId = hubPrefs.getPairedHomeId() ?: return
+        val token = hubPrefs.getAccessToken()
+        if (!BuildConfig.DEV_SKIP_AUTH && token.isNullOrBlank()) return
 
         lastCryAlertTime = now
         try {
+            val authHeader = if (BuildConfig.DEV_SKIP_AUTH) null else "Bearer $token"
             val res = eventsApi.createEvent(
-                "Bearer $token",
+                authHeader,
                 CreateEventRequest(
                     homeId = homeId,
                     eventType = "cry_detected",
@@ -51,12 +54,14 @@ class AlertEscalationManager @Inject constructor(
         val unknownFaces = faces.filter { !it.isAuthorized }
         if (unknownFaces.isEmpty()) return
 
-        val token = hubPrefs.getAccessToken() ?: return
         val homeId = hubPrefs.getPairedHomeId() ?: return
+        val token = hubPrefs.getAccessToken()
+        if (!BuildConfig.DEV_SKIP_AUTH && token.isNullOrBlank()) return
 
         try {
+            val authHeader = if (BuildConfig.DEV_SKIP_AUTH) null else "Bearer $token"
             val res = eventsApi.createEvent(
-                "Bearer $token",
+                authHeader,
                 CreateEventRequest(
                     homeId = homeId,
                     eventType = "security_unknown_face",

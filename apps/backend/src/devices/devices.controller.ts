@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { AppJwtAuthGuard } from '../auth/app-jwt-auth.guard';
 import { DevicesService } from './devices.service';
 import { CreateDeviceDto } from './dto/create-device.dto';
 import { DiscoverDeviceDto } from './dto/discover-device.dto';
@@ -9,7 +9,7 @@ import { PairingConfirmDto } from './dto/pairing-confirm.dto';
 
 @ApiTags('devices')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AppJwtAuthGuard)
 @Controller('devices')
 export class DevicesController {
   constructor(private devicesService: DevicesService) {}

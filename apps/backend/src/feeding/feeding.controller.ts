@@ -1,12 +1,12 @@
 import { Controller, Get, Post, Delete, Body, Param, Query, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { AppJwtAuthGuard } from '../auth/app-jwt-auth.guard';
 import { FeedingService } from './feeding.service';
 import { CreateFeedingDto } from './dto/create-feeding.dto';
 
 @ApiTags('feeding')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AppJwtAuthGuard)
 @Controller('feeding')
 export class FeedingController {
   constructor(private feedingService: FeedingService) {}

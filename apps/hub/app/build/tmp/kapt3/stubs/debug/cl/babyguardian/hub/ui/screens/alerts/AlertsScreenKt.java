@@ -4,12 +4,12 @@ package cl.babyguardian.hub.ui.screens.alerts;
 @kotlin.OptIn(markerClass = {androidx.compose.material3.ExperimentalMaterial3Api.class})
 public final class AlertsScreenKt {
     
-    @androidx.compose.runtime.Composable
-    public static final void AlertsScreen(@org.jetbrains.annotations.NotNull
+    @androidx.compose.runtime.Composable()
+    public static final void AlertsScreen(@org.jetbrains.annotations.NotNull()
     kotlin.jvm.functions.Function0<kotlin.Unit> onBack) {
     }
     
-    @androidx.compose.runtime.Composable
+    @androidx.compose.runtime.Composable()
     private static final void AlertCard(cl.babyguardian.hub.ui.screens.alerts.AlertItem alert) {
     }
 }

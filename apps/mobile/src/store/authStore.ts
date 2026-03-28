@@ -33,6 +33,20 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
   hydrate: async () => {
     if (get().hydrated) return;
+    const devBypass = process.env.REACT_NATIVE_AUTH_DEV_BYPASS === 'true';
+    if (devBypass) {
+      set({
+        user: {
+          id: 'dev-bypass',
+          email: 'dev@local',
+          fullName: 'Dev (sin auth)',
+        },
+        token: null,
+        isAuthenticated: true,
+        hydrated: true,
+      });
+      return;
+    }
     try {
       const creds = await Keychain.getGenericPassword({ service: 'babyguardian.jwt' });
       if (!creds?.password) {

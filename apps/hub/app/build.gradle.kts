@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,6 +8,11 @@ plugins {
     id("com.google.gms.google-services")
     kotlin("kapt")
 }
+
+val hubLocalProps = Properties().apply {
+    rootProject.file("local.properties").takeIf { it.exists() }?.reader(Charsets.UTF_8)?.use { load(it) }
+}
+val devSkipAuth = (hubLocalProps.getProperty("dev.skip.auth") ?: "") == "true"
 
 android {
     namespace = "cl.babyguardian.hub"
@@ -27,11 +34,14 @@ android {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "API_BASE_URL", "\"https://api.babyguardian.example/api/v1/\"")
+            buildConfigField("boolean", "DEV_SKIP_AUTH", "false")
         }
         debug {
             isDebuggable = true
             // Emulador Android → host: 10.0.2.2; dispositivo físico: IP de tu máquina en LAN
             buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:3000/api/v1/\"")
+            // En apps/hub/local.properties: dev.skip.auth=true (+ backend AUTH_DEV_BYPASS y AUTH_DEV_BYPASS_USER_ID)
+            buildConfigField("boolean", "DEV_SKIP_AUTH", if (devSkipAuth) "true" else "false")
         }
     }
 
@@ -47,13 +57,14 @@ android {
         buildConfig = true
     }
 
-    composeOptions { kotlinCompilerExtensionVersion = "1.5.1" }
+    composeOptions { kotlinCompilerExtensionVersion = "1.5.14" }
 
     packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2024.01.00")
+    // Evitar 2024.01.00: Material3 1.1.2 + animation-core desalineados (crash en CircularProgressIndicator).
+    val composeBom = platform("androidx.compose:compose-bom:2024.02.00")
     implementation(composeBom)
 
     // Core Android
@@ -109,6 +120,9 @@ dependencies {
     // Firebase (push notifications)
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-messaging-ktx")
+
+    // Google Sign-In (idToken → backend /auth/google)
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
 
     // WorkManager (background tasks)
     implementation("androidx.work:work-runtime-ktx:2.9.0")

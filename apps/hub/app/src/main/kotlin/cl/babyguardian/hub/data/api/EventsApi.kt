@@ -9,7 +9,7 @@ import retrofit2.http.POST
 interface EventsApi {
     @POST("events")
     suspend fun createEvent(
-        @Header("Authorization") authorization: String,
+        @Header("Authorization") authorization: String?,
         @Body body: CreateEventRequest,
     ): Response<Map<String, @JvmSuppressWildcards Any?>>
 }

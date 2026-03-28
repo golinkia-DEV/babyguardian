@@ -13,6 +13,12 @@ export default () => ({
     secret: process.env.JWT_SECRET || 'dev_jwt_secret_change_in_production',
     expiresIn: process.env.JWT_EXPIRES_IN || '7d',
   },
+  auth: {
+    /** Solo con NODE_ENV=development explícito y AUTH_DEV_BYPASS=true */
+    devBypass:
+      process.env.AUTH_DEV_BYPASS === 'true' && process.env.NODE_ENV === 'development',
+    devBypassUserId: (process.env.AUTH_DEV_BYPASS_USER_ID || '').trim(),
+  },
   fcm: {
     serverKey: process.env.FCM_SERVER_KEY || '',
   },

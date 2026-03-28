@@ -1,0 +1,739 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="cl.babyguardian.hub"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Permissions -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:5:5-67
+12-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:5:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:6:5-79
+13-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:6:22-76
+14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+14-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:7:5-76
+14-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:7:22-73
+15    <uses-permission android:name="android.permission.CAMERA" />
+15-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:8:5-65
+15-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:8:22-62
+16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+16-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:9:5-71
+16-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:9:22-68
+17    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+17-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:10:5-77
+17-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:10:22-74
+18    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+18-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:11:5-88
+18-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:11:22-85
+19    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+19-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:12:5-84
+19-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:12:22-81
+20    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+20-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:13:5-92
+20-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:13:22-89
+21    <uses-permission android:name="android.permission.WAKE_LOCK" />
+21-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:14:5-68
+21-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:14:22-65
+22    <uses-permission android:name="android.permission.VIBRATE" />
+22-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:15:5-66
+22-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:15:22-63
+23    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+23-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:16:5-77
+23-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:16:22-74
+24    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+24-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:17:5-81
+24-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:17:22-78
+25    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+25-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:18:5-86
+25-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:18:22-83
+26    <uses-permission android:name="android.permission.NFC" />
+26-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:19:5-62
+26-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:19:22-59
+27
+28    <uses-feature
+28-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:21:5-85
+29        android:name="android.hardware.camera"
+29-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:21:19-57
+30        android:required="false" />
+30-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:21:58-82
+31    <uses-feature
+31-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:22:5-88
+32        android:name="android.hardware.microphone"
+32-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:22:19-61
+33        android:required="true" />
+33-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:22:62-85
+34    <!-- Required by older versions of Google Play services to create IID tokens -->
+35    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+35-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:26:5-82
+35-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:26:22-79
+36
+37    <permission
+37-->[androidx.core:core:1.12.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/fe97a0380c4453b1595050b498d6337c/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+38        android:name="cl.babyguardian.hub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+38-->[androidx.core:core:1.12.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/fe97a0380c4453b1595050b498d6337c/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+39        android:protectionLevel="signature" />
+39-->[androidx.core:core:1.12.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/fe97a0380c4453b1595050b498d6337c/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+40
+41    <uses-permission android:name="cl.babyguardian.hub.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+41-->[androidx.core:core:1.12.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/fe97a0380c4453b1595050b498d6337c/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+41-->[androidx.core:core:1.12.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/fe97a0380c4453b1595050b498d6337c/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+42
+43    <uses-feature
+43-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+44        android:name="android.hardware.camera.front"
+44-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+45        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+45-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+46    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+47    <uses-feature
+47-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+48        android:name="android.hardware.camera.autofocus"
+48-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+49        android:required="false" />
+49-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+50    <uses-feature
+50-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+51        android:name="android.hardware.camera.flash"
+51-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+52        android:required="false" />
+52-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+53    <uses-feature
+53-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+54        android:name="android.hardware.screen.landscape"
+54-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+55        android:required="false" />
+55-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+56    <uses-feature
+56-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+57        android:name="android.hardware.wifi"
+57-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+58        android:required="false" />
+58-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+59
+60    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+61    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+62    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+63
+64    <application
+64-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:24:5-73:19
+65        android:name="cl.babyguardian.hub.BabyGuardianApp"
+65-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:25:9-40
+66        android:allowBackup="true"
+66-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:26:9-35
+67        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+67-->[androidx.core:core:1.12.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/fe97a0380c4453b1595050b498d6337c/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+68        android:debuggable="true"
+69        android:extractNativeLibs="false"
+70        android:hardwareAccelerated="true"
+70-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:33:9-43
+71        android:icon="@drawable/ic_launcher"
+71-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:27:9-45
+72        android:label="@string/app_name"
+72-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:28:9-41
+73        android:largeHeap="true"
+73-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:34:9-33
+74        android:roundIcon="@drawable/ic_launcher"
+74-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:29:9-50
+75        android:supportsRtl="true"
+75-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:30:9-35
+76        android:testOnly="true"
+77        android:theme="@style/Theme.BabyGuardianHub"
+77-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:31:9-53
+78        android:usesCleartextTraffic="true" >
+78-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:32:9-44
+79        <activity
+79-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:36:9-46:20
+80            android:name="cl.babyguardian.hub.ui.MainActivity"
+80-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:37:13-44
+81            android:exported="true"
+81-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:38:13-36
+82            android:launchMode="singleTask"
+82-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:39:13-44
+83            android:screenOrientation="landscape"
+83-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:40:13-50
+84            android:windowSoftInputMode="adjustResize" >
+84-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:41:13-55
+85            <intent-filter>
+85-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:42:13-45:29
+86                <action android:name="android.intent.action.MAIN" />
+86-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:43:17-69
+86-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:43:25-66
+87
+88                <category android:name="android.intent.category.LAUNCHER" />
+88-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:44:17-77
+88-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:44:27-74
+89            </intent-filter>
+90        </activity>
+91
+92        <!-- Baby Monitor Foreground Service -->
+93        <service
+93-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:49:9-53:44
+94            android:name="cl.babyguardian.hub.service.BabyMonitorService"
+94-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:50:13-55
+95            android:exported="false"
+95-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:51:13-37
+96            android:foregroundServiceType="microphone|camera"
+96-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:52:13-62
+97            android:stopWithTask="false" />
+97-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:53:13-41
+98
+99        <!-- FCM Service -->
+100        <service
+100-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:56:9-62:19
+101            android:name="cl.babyguardian.hub.service.BabyFirebaseMessagingService"
+101-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:57:13-65
+102            android:exported="false" >
+102-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:58:13-37
+103            <intent-filter>
+103-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:59:13-61:29
+104                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+104-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:17-78
+104-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:25-75
+105            </intent-filter>
+106        </service>
+107
+108        <!-- Boot receiver -->
+109        <receiver
+109-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:65:9-71:20
+110            android:name="cl.babyguardian.hub.receiver.BootReceiver"
+110-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:66:13-50
+111            android:exported="true" >
+111-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:67:13-36
+112            <intent-filter>
+112-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:68:13-70:29
+113                <action android:name="android.intent.action.BOOT_COMPLETED" />
+113-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:17-79
+113-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:25-76
+114            </intent-filter>
+115        </receiver>
+116
+117        <!--
+118        Service for holding metadata. Cannot be instantiated.
+119        Metadata will be merged from other manifests.
+120        -->
+121        <service
+121-->[androidx.camera:camera-core:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/9daaaebf71dc7b4cdf58dbf182de0111/transformed/camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+122            android:name="androidx.camera.core.impl.MetadataHolderService"
+122-->[androidx.camera:camera-core:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/9daaaebf71dc7b4cdf58dbf182de0111/transformed/camera-core-1.3.1/AndroidManifest.xml:30:13-75
+123            android:enabled="false"
+123-->[androidx.camera:camera-core:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/9daaaebf71dc7b4cdf58dbf182de0111/transformed/camera-core-1.3.1/AndroidManifest.xml:31:13-36
+124            android:exported="false" >
+124-->[androidx.camera:camera-core:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/9daaaebf71dc7b4cdf58dbf182de0111/transformed/camera-core-1.3.1/AndroidManifest.xml:32:13-37
+125            <meta-data
+125-->[androidx.camera:camera-camera2:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/52877e3d9c637c57eb83b3ed2603c997/transformed/camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
+126                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+126-->[androidx.camera:camera-camera2:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/52877e3d9c637c57eb83b3ed2603c997/transformed/camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
+127                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+127-->[androidx.camera:camera-camera2:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/52877e3d9c637c57eb83b3ed2603c997/transformed/camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
+128        </service>
+129        <service
+129-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/ee67e1045c8e25e5eb8bc419808fde23/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:9:9-15:19
+130            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+130-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/ee67e1045c8e25e5eb8bc419808fde23/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:10:13-91
+131            android:directBootAware="true"
+131-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:17:13-43
+132            android:exported="false" >
+132-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/ee67e1045c8e25e5eb8bc419808fde23/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:11:13-37
+133            <meta-data
+133-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/ee67e1045c8e25e5eb8bc419808fde23/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:12:13-14:85
+134                android:name="com.google.firebase.components:com.google.mlkit.vision.face.internal.FaceRegistrar"
+134-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/ee67e1045c8e25e5eb8bc419808fde23/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:13:17-114
+135                android:value="com.google.firebase.components.ComponentRegistrar" />
+135-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/ee67e1045c8e25e5eb8bc419808fde23/transformed/play-services-mlkit-face-detection-17.0.1/AndroidManifest.xml:14:17-82
+136            <meta-data
+136-->[com.google.mlkit:vision-common:17.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/114ff0b59de7d9a24dd9d94913d21a3b/transformed/vision-common-17.1.0/AndroidManifest.xml:12:13-14:85
+137                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+137-->[com.google.mlkit:vision-common:17.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/114ff0b59de7d9a24dd9d94913d21a3b/transformed/vision-common-17.1.0/AndroidManifest.xml:13:17-124
+138                android:value="com.google.firebase.components.ComponentRegistrar" />
+138-->[com.google.mlkit:vision-common:17.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/114ff0b59de7d9a24dd9d94913d21a3b/transformed/vision-common-17.1.0/AndroidManifest.xml:14:17-82
+139            <meta-data
+139-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:20:13-22:85
+140                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+140-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:21:17-120
+141                android:value="com.google.firebase.components.ComponentRegistrar" />
+141-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:22:17-82
+142        </service>
+143
+144        <provider
+144-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:9:9-13:38
+145            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+145-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:10:13-78
+146            android:authorities="cl.babyguardian.hub.mlkitinitprovider"
+146-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:11:13-69
+147            android:exported="false"
+147-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:12:13-37
+148            android:initOrder="99" />
+148-->[com.google.mlkit:common:18.1.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ee654544822ce021cad1c2f96123651/transformed/common-18.1.0/AndroidManifest.xml:13:13-35
+149
+150        <activity
+150-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:23:9-27:75
+151            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+151-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:24:13-93
+152            android:excludeFromRecents="true"
+152-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:25:13-46
+153            android:exported="false"
+153-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:26:13-37
+154            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+154-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:27:13-72
+155        <!--
+156            Service handling Google Sign-In user revocation. For apps that do not integrate with
+157            Google Sign-In, this service will never be started.
+158        -->
+159        <service
+159-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:33:9-37:51
+160            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+160-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:34:13-89
+161            android:exported="true"
+161-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:35:13-36
+162            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+162-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:36:13-107
+163            android:visibleToInstantApps="true" />
+163-->[com.google.android.gms:play-services-auth:21.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/AndroidManifest.xml:37:13-48
+164        <service
+164-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/410aa036a1d34b12b8db24b2f0f089ba/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:23:9-29:19
+165            android:name="com.google.firebase.components.ComponentDiscoveryService"
+165-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/410aa036a1d34b12b8db24b2f0f089ba/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:24:13-84
+166            android:directBootAware="true"
+166-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:32:13-43
+167            android:exported="false" >
+167-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/410aa036a1d34b12b8db24b2f0f089ba/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:25:13-37
+168            <meta-data
+168-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/410aa036a1d34b12b8db24b2f0f089ba/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:26:13-28:85
+169                android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingLegacyRegistrar"
+169-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/410aa036a1d34b12b8db24b2f0f089ba/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:27:17-129
+170                android:value="com.google.firebase.components.ComponentRegistrar" />
+170-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/410aa036a1d34b12b8db24b2f0f089ba/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:28:17-82
+171            <meta-data
+171-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:57:13-59:85
+172                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+172-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:58:17-122
+173                android:value="com.google.firebase.components.ComponentRegistrar" />
+173-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:59:17-82
+174            <meta-data
+174-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:60:13-62:85
+175                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+175-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:61:17-119
+176                android:value="com.google.firebase.components.ComponentRegistrar" />
+176-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:62:17-82
+177            <meta-data
+177-->[com.google.firebase:firebase-installations:17.2.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4e4f91ba74151d7b9d7564abf160fa9f/transformed/firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
+178                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+178-->[com.google.firebase:firebase-installations:17.2.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4e4f91ba74151d7b9d7564abf160fa9f/transformed/firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
+179                android:value="com.google.firebase.components.ComponentRegistrar" />
+179-->[com.google.firebase:firebase-installations:17.2.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4e4f91ba74151d7b9d7564abf160fa9f/transformed/firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
+180            <meta-data
+180-->[com.google.firebase:firebase-installations:17.2.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4e4f91ba74151d7b9d7564abf160fa9f/transformed/firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
+181                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+181-->[com.google.firebase:firebase-installations:17.2.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4e4f91ba74151d7b9d7564abf160fa9f/transformed/firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
+182                android:value="com.google.firebase.components.ComponentRegistrar" />
+182-->[com.google.firebase:firebase-installations:17.2.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4e4f91ba74151d7b9d7564abf160fa9f/transformed/firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
+183            <meta-data
+183-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/48ea131372f4d731ec74c90edef403b8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:12:13-14:85
+184                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+184-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/48ea131372f4d731ec74c90edef403b8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:13:17-116
+185                android:value="com.google.firebase.components.ComponentRegistrar" />
+185-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/48ea131372f4d731ec74c90edef403b8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:14:17-82
+186            <meta-data
+186-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:35:13-37:85
+187                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+187-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:36:17-109
+188                android:value="com.google.firebase.components.ComponentRegistrar" />
+188-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:37:17-82
+189            <meta-data
+189-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/felipe.gamonal/.gradle/caches/transforms-4/627186cd0783bef9daff1462b7ed1cd1/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+190                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+190-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/felipe.gamonal/.gradle/caches/transforms-4/627186cd0783bef9daff1462b7ed1cd1/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+191                android:value="com.google.firebase.components.ComponentRegistrar" />
+191-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/felipe.gamonal/.gradle/caches/transforms-4/627186cd0783bef9daff1462b7ed1cd1/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+192        </service>
+193
+194        <receiver
+194-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:29:9-40:20
+195            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+195-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:30:13-78
+196            android:exported="true"
+196-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:31:13-36
+197            android:permission="com.google.android.c2dm.permission.SEND" >
+197-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:32:13-73
+198            <intent-filter>
+198-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:33:13-35:29
+199                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+199-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:34:17-81
+199-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:34:25-78
+200            </intent-filter>
+201
+202            <meta-data
+202-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:37:13-39:40
+203                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+203-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:38:17-92
+204                android:value="true" />
+204-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:39:17-37
+205        </receiver>
+206        <!--
+207             FirebaseMessagingService performs security checks at runtime,
+208             but set to not exported to explicitly avoid allowing another app to call it.
+209        -->
+210        <service
+210-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:46:9-53:19
+211            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+211-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:47:13-82
+212            android:directBootAware="true"
+212-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:48:13-43
+213            android:exported="false" >
+213-->[com.google.firebase:firebase-messaging:23.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/ac4b1e0883f1c62c6a9aac0f0961cfbb/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:49:13-37
+214            <intent-filter android:priority="-500" >
+214-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:59:13-61:29
+215                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+215-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:17-78
+215-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:60:25-75
+216            </intent-filter>
+217        </service>
+218
+219        <activity
+219-->[com.google.android.gms:play-services-base:18.5.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4ec71e5e13c758eee074a5b0fce2125a/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
+220            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+220-->[com.google.android.gms:play-services-base:18.5.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4ec71e5e13c758eee074a5b0fce2125a/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+221            android:exported="false"
+221-->[com.google.android.gms:play-services-base:18.5.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4ec71e5e13c758eee074a5b0fce2125a/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
+222            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+222-->[com.google.android.gms:play-services-base:18.5.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/4ec71e5e13c758eee074a5b0fce2125a/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
+223
+224        <provider
+224-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
+225            android:name="com.google.firebase.provider.FirebaseInitProvider"
+225-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:24:13-77
+226            android:authorities="cl.babyguardian.hub.firebaseinitprovider"
+226-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:25:13-72
+227            android:directBootAware="true"
+227-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:26:13-43
+228            android:exported="false"
+228-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:27:13-37
+229            android:initOrder="100" />
+229-->[com.google.firebase:firebase-common:20.4.2] /Users/felipe.gamonal/.gradle/caches/transforms-4/e30dafafe8cae129677ffc8175a737a9/transformed/firebase-common-20.4.2/AndroidManifest.xml:28:13-36
+230
+231        <activity
+231-->[androidx.compose.ui:ui-tooling-android:1.6.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/529f80d838724cf42c9957358f97988e/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
+232            android:name="androidx.compose.ui.tooling.PreviewActivity"
+232-->[androidx.compose.ui:ui-tooling-android:1.6.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/529f80d838724cf42c9957358f97988e/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
+233            android:exported="true" />
+233-->[androidx.compose.ui:ui-tooling-android:1.6.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/529f80d838724cf42c9957358f97988e/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
+234
+235        <provider
+235-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:29:9-37:20
+236            android:name="androidx.startup.InitializationProvider"
+236-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:30:13-67
+237            android:authorities="cl.babyguardian.hub.androidx-startup"
+237-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:31:13-68
+238            android:exported="false" >
+238-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:32:13-37
+239            <meta-data
+239-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:34:13-36:52
+240                android:name="androidx.work.WorkManagerInitializer"
+240-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:35:17-68
+241                android:value="androidx.startup" />
+241-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:36:17-49
+242            <meta-data
+242-->[androidx.emoji2:emoji2:1.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/556eb21251c78535dfa1894c7e49c8f9/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+243                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+243-->[androidx.emoji2:emoji2:1.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/556eb21251c78535dfa1894c7e49c8f9/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+244                android:value="androidx.startup" />
+244-->[androidx.emoji2:emoji2:1.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/556eb21251c78535dfa1894c7e49c8f9/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+245            <meta-data
+245-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/1af1d175c48756f6dd6f49f0f4099cd9/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+246                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+246-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/1af1d175c48756f6dd6f49f0f4099cd9/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+247                android:value="androidx.startup" />
+247-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/1af1d175c48756f6dd6f49f0f4099cd9/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+248            <meta-data
+248-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+249                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+249-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+250                android:value="androidx.startup" />
+250-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+251        </provider>
+252
+253        <service
+253-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:39:9-45:35
+254            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+254-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:40:13-88
+255            android:directBootAware="false"
+255-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:41:13-44
+256            android:enabled="@bool/enable_system_alarm_service_default"
+256-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:42:13-72
+257            android:exported="false" />
+257-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:43:13-37
+258        <service
+258-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:46:9-52:35
+259            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+259-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:47:13-84
+260            android:directBootAware="false"
+260-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:48:13-44
+261            android:enabled="@bool/enable_system_job_service_default"
+261-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:49:13-70
+262            android:exported="true"
+262-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:50:13-36
+263            android:permission="android.permission.BIND_JOB_SERVICE" />
+263-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:51:13-69
+264        <service
+264-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:53:9-59:35
+265            android:name="androidx.work.impl.foreground.SystemForegroundService"
+265-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:54:13-81
+266            android:directBootAware="false"
+266-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:55:13-44
+267            android:enabled="@bool/enable_system_foreground_service_default"
+267-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:56:13-77
+268            android:exported="false" />
+268-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:57:13-37
+269
+270        <receiver
+270-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:61:9-66:35
+271            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+271-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:62:13-88
+272            android:directBootAware="false"
+272-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:63:13-44
+273            android:enabled="true"
+273-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:64:13-35
+274            android:exported="false" />
+274-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:65:13-37
+275        <receiver
+275-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:67:9-77:20
+276            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+276-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:68:13-106
+277            android:directBootAware="false"
+277-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:69:13-44
+278            android:enabled="false"
+278-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:70:13-36
+279            android:exported="false" >
+279-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:71:13-37
+280            <intent-filter>
+280-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:73:13-76:29
+281                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+281-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:17-87
+281-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:25-84
+282                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+282-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:17-90
+282-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:25-87
+283            </intent-filter>
+284        </receiver>
+285        <receiver
+285-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:78:9-88:20
+286            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+286-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:79:13-104
+287            android:directBootAware="false"
+287-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:80:13-44
+288            android:enabled="false"
+288-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:81:13-36
+289            android:exported="false" >
+289-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:82:13-37
+290            <intent-filter>
+290-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:84:13-87:29
+291                <action android:name="android.intent.action.BATTERY_OKAY" />
+291-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:17-77
+291-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:25-74
+292                <action android:name="android.intent.action.BATTERY_LOW" />
+292-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:17-76
+292-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:25-73
+293            </intent-filter>
+294        </receiver>
+295        <receiver
+295-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:89:9-99:20
+296            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+296-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:90:13-104
+297            android:directBootAware="false"
+297-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:91:13-44
+298            android:enabled="false"
+298-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:92:13-36
+299            android:exported="false" >
+299-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:93:13-37
+300            <intent-filter>
+300-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:95:13-98:29
+301                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+301-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:17-83
+301-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:25-80
+302                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+302-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:17-82
+302-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:25-79
+303            </intent-filter>
+304        </receiver>
+305        <receiver
+305-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:100:9-109:20
+306            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+306-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:101:13-103
+307            android:directBootAware="false"
+307-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:102:13-44
+308            android:enabled="false"
+308-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:103:13-36
+309            android:exported="false" >
+309-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:104:13-37
+310            <intent-filter>
+310-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:106:13-108:29
+311                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+311-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:17-79
+311-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:25-76
+312            </intent-filter>
+313        </receiver>
+314        <receiver
+314-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:110:9-121:20
+315            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+315-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:111:13-88
+316            android:directBootAware="false"
+316-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:112:13-44
+317            android:enabled="false"
+317-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:113:13-36
+318            android:exported="false" >
+318-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:114:13-37
+319            <intent-filter>
+319-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:116:13-120:29
+320                <action android:name="android.intent.action.BOOT_COMPLETED" />
+320-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:17-79
+320-->/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/src/main/AndroidManifest.xml:69:25-76
+321                <action android:name="android.intent.action.TIME_SET" />
+321-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:17-73
+321-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:25-70
+322                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+322-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:17-81
+322-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:25-78
+323            </intent-filter>
+324        </receiver>
+325        <receiver
+325-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:122:9-131:20
+326            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+326-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:123:13-99
+327            android:directBootAware="false"
+327-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:124:13-44
+328            android:enabled="@bool/enable_system_alarm_service_default"
+328-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:125:13-72
+329            android:exported="false" >
+329-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:126:13-37
+330            <intent-filter>
+330-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:128:13-130:29
+331                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+331-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:17-98
+331-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:25-95
+332            </intent-filter>
+333        </receiver>
+334        <receiver
+334-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:132:9-142:20
+335            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+335-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:133:13-78
+336            android:directBootAware="false"
+336-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:134:13-44
+337            android:enabled="true"
+337-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:135:13-35
+338            android:exported="true"
+338-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:136:13-36
+339            android:permission="android.permission.DUMP" >
+339-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:137:13-57
+340            <intent-filter>
+340-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:139:13-141:29
+341                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+341-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:17-88
+341-->[androidx.work:work-runtime:2.9.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:25-85
+342            </intent-filter>
+343        </receiver>
+344
+345        <service
+345-->[androidx.room:room-runtime:2.6.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/7ce204ca8a2debd0831049646c7794bb/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+346            android:name="androidx.room.MultiInstanceInvalidationService"
+346-->[androidx.room:room-runtime:2.6.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/7ce204ca8a2debd0831049646c7794bb/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+347            android:directBootAware="true"
+347-->[androidx.room:room-runtime:2.6.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/7ce204ca8a2debd0831049646c7794bb/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+348            android:exported="false" />
+348-->[androidx.room:room-runtime:2.6.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/7ce204ca8a2debd0831049646c7794bb/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+349
+350        <meta-data
+350-->[com.google.android.gms:play-services-basement:18.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/09e06c4c090b982c0b7858e92e0d3944/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:9-122
+351            android:name="com.google.android.gms.version"
+351-->[com.google.android.gms:play-services-basement:18.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/09e06c4c090b982c0b7858e92e0d3944/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:20-65
+352            android:value="@integer/google_play_services_version" />
+352-->[com.google.android.gms:play-services-basement:18.4.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/09e06c4c090b982c0b7858e92e0d3944/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:66-119
+353
+354        <service
+354-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/ceceaa189285e521e933a7f90032aacd/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+355            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+355-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/ceceaa189285e521e933a7f90032aacd/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+356            android:exported="false" >
+356-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/ceceaa189285e521e933a7f90032aacd/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+357            <meta-data
+357-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/ceceaa189285e521e933a7f90032aacd/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+358                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+358-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/ceceaa189285e521e933a7f90032aacd/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+359                android:value="cct" />
+359-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/ceceaa189285e521e933a7f90032aacd/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+360        </service>
+361        <service
+361-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/7eb3beb50c9f28529a60d690ff75bc3b/transformed/transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+362            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+362-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/7eb3beb50c9f28529a60d690ff75bc3b/transformed/transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+363            android:exported="false"
+363-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/7eb3beb50c9f28529a60d690ff75bc3b/transformed/transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+364            android:permission="android.permission.BIND_JOB_SERVICE" >
+364-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/7eb3beb50c9f28529a60d690ff75bc3b/transformed/transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+365        </service>
+366
+367        <receiver
+367-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/7eb3beb50c9f28529a60d690ff75bc3b/transformed/transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+368            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+368-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/7eb3beb50c9f28529a60d690ff75bc3b/transformed/transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+369            android:exported="false" />
+369-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/felipe.gamonal/.gradle/caches/transforms-4/7eb3beb50c9f28529a60d690ff75bc3b/transformed/transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+370        <receiver
+370-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+371            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+371-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+372            android:directBootAware="false"
+372-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+373            android:enabled="true"
+373-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+374            android:exported="true"
+374-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+375            android:permission="android.permission.DUMP" >
+375-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+376            <intent-filter>
+376-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+377                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+377-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+377-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+378            </intent-filter>
+379            <intent-filter>
+379-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+380                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+380-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+380-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+381            </intent-filter>
+382            <intent-filter>
+382-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+383                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+383-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+383-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+384            </intent-filter>
+385            <intent-filter>
+385-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+386                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+386-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+386-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/felipe.gamonal/.gradle/caches/transforms-4/5ec03099f3b8f7851052b21e70b5ff6d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+387            </intent-filter>
+388        </receiver>
+389
+390        <activity
+390-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+391            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+391-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
+392            android:clearTaskOnLaunch="true"
+392-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+393            android:screenOrientation="sensorLandscape"
+393-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+394            android:stateNotNeeded="true"
+394-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+395            android:theme="@style/zxing_CaptureTheme"
+395-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+396            android:windowSoftInputMode="stateAlwaysHidden" />
+396-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/felipe.gamonal/.gradle/caches/transforms-4/eb63f625ac2e6a441f6deebeb49c2142/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+397    </application>
+398
+399</manifest>

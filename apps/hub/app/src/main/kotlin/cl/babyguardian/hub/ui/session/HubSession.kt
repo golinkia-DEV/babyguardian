@@ -9,13 +9,15 @@ sealed class HubSession {
     data class Ready(val token: String, val homeId: String) : HubSession()
 
     companion object {
-        fun from(snapshot: HubSnapshot): HubSession {
+        /** Si [devSkipAuth] (solo debug Hub), se considera sesión iniciada sin token; el backend debe usar AUTH_DEV_BYPASS. */
+        fun from(snapshot: HubSnapshot, devSkipAuth: Boolean): HubSession {
             val token = snapshot.accessToken
             val homeId = snapshot.pairedHomeId
+            val authed = !token.isNullOrBlank() || devSkipAuth
             return when {
-                token.isNullOrBlank() -> Login
+                !authed -> Login
                 homeId.isNullOrBlank() -> NeedsPairing
-                else -> Ready(token, homeId)
+                else -> Ready(token.orEmpty(), homeId)
             }
         }
     }

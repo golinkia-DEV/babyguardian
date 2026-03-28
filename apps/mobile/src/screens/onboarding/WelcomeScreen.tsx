@@ -61,11 +61,11 @@ export const WelcomeScreen: React.FC = () => {
           activeOpacity={0.85}
         >
           <Icon name="login" size={22} color="white" />
-          <Text style={styles.googleButtonText}>Iniciar con Google</Text>
+          <Text style={styles.googleButtonText}>Registrarse o entrar con Google</Text>
         </TouchableOpacity>
         <Text style={[styles.legalText, { color: theme.textSecondary }]}>
-          Con tu cuenta Google sincronizaremos tu perfil y{'\n'}
-          dispositivos de forma segura. Sin guardar tu video en la nube.
+          Si es tu primera vez, creamos tu cuenta al elegir Google.{'\n'}
+          Tu perfil y dispositivos quedan sincronizados; el video no va a la nube.
         </Text>
       </View>
     </SafeAreaView>

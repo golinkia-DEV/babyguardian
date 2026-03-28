@@ -1,13 +1,13 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { AppJwtAuthGuard } from '../auth/app-jwt-auth.guard';
 import { BabiesService } from './babies.service';
 import { CreateBabyDto } from './dto/create-baby.dto';
 import { UpdateBabyDto } from './dto/update-baby.dto';
 
 @ApiTags('babies')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AppJwtAuthGuard)
 @Controller('babies')
 export class BabiesController {
   constructor(private babiesService: BabiesService) {}

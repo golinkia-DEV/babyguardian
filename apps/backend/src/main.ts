@@ -1,10 +1,17 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
+  if (configService.get<boolean>('auth.devBypass')) {
+    Logger.warn(
+      '[AUTH] AUTH_DEV_BYPASS está activo: peticiones sin Bearer usan AUTH_DEV_BYPASS_USER_ID. No uses esto en producción.',
+    );
+  }
 
   app.setGlobalPrefix('api/v1');
 

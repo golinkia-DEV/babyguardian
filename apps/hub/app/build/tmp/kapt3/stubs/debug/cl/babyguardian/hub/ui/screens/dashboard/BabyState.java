@@ -9,7 +9,7 @@ public enum BabyState {
     BabyState() {
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static kotlin.enums.EnumEntries<cl.babyguardian.hub.ui.screens.dashboard.BabyState> getEntries() {
         return null;
     }
