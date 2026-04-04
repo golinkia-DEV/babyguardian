@@ -23,9 +23,21 @@ async function bootstrap() {
     }),
   );
 
-  app.enableCors({
-    origin: process.env.CORS_ORIGINS?.split(',') || ['http://localhost:8081'],
-    credentials: true,
+  // CORS abierto: acepta cualquier origen (app local / LAN)
+  const corsOrigins = process.env.CORS_ORIGINS;
+  app.enableCors(
+    corsOrigins === '*'
+      ? { origin: true, credentials: true }
+      : {
+          origin: corsOrigins?.split(',') || ['http://localhost:8081'],
+          credentials: true,
+        },
+  );
+
+  // Healthcheck fuera del global prefix para que nginx pueda chequearlo facilmente
+  const httpAdapter = app.getHttpAdapter();
+  httpAdapter.get('/health', (_req, res) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
   });
 
   const config = new DocumentBuilder()
