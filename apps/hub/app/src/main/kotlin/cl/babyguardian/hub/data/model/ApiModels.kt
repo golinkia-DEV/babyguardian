@@ -30,6 +30,26 @@ data class PairingConfirmResponse(
     val reason: String? = null,
 )
 
+// Pairing Sessions (hub-first flow)
+data class CreatePairingSessionRequest(
+    val homeId: String,
+    val hubDeviceId: String? = null,
+)
+
+data class PairingSessionResponse(
+    val id: String,
+    val code: String,
+    val qrData: String,
+    val expiresAt: String,
+    val status: String,
+)
+
+data class PairingSessionStatusResponse(
+    val status: String,
+    val claimedBy: String? = null,
+    val claimedAt: String? = null,
+)
+
 data class CreateEventRequest(
     val homeId: String,
     val babyId: String? = null,

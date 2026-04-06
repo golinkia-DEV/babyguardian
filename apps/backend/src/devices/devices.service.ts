@@ -1,20 +1,32 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, TooManyRequestsException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, MoreThan } from 'typeorm';
 import { SmartDevice } from './smart-device.entity';
 import { InviteToken } from './invite-token.entity';
+import { PairingSession } from './pairing-session.entity';
 import * as net from 'net';
 import { HomesService } from '../homes/homes.service';
 import { CreateDeviceDto } from './dto/create-device.dto';
 import { DiscoverDeviceDto } from './dto/discover-device.dto';
+import { CreatePairingSessionDto } from './dto/create-pairing-session.dto';
+import { ClaimPairingSessionDto } from './dto/claim-pairing-session.dto';
+import { PairingSessionResponseDto, ClaimResponseDto, PairingStatusResponseDto } from './dto/pairing-session-response.dto';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class DevicesService {
+  private readonly PAIRING_TTL_MINUTES = 5;
+  private readonly PAIRING_CODE_LENGTH = 8;
+  private readonly MAX_FAILED_ATTEMPTS = 10;
+  private readonly FAILED_ATTEMPTS_WINDOW_MINUTES = 10;
+
   constructor(
     @InjectRepository(SmartDevice)
     private devicesRepository: Repository<SmartDevice>,
     @InjectRepository(InviteToken)
     private inviteTokensRepository: Repository<InviteToken>,
+    @InjectRepository(PairingSession)
+    private pairingSessionsRepository: Repository<PairingSession>,
     private homesService: HomesService,
   ) {}
 
@@ -214,7 +226,231 @@ export class DevicesService {
     });
   }
 
-  private generatePairingCode() {
-    return Math.random().toString(36).substring(2, 8).toUpperCase();
+  private generatePairingCode(): string {
+    // Base32 without ambiguous characters: 0/O, 1/I/l
+    const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for (let i = 0; i < this.PAIRING_CODE_LENGTH; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+  }
+
+  /**
+   * Hub creates a pairing session and gets code + QR payload
+   */
+  async createPairingSessionForUser(
+    userId: string,
+    dto: CreatePairingSessionDto,
+  ): Promise<PairingSessionResponseDto> {
+    // Verify user owns this home
+    await this.homesService.assertOwner(userId, dto.homeId);
+
+    const code = this.generatePairingCode();
+    const pairingToken = uuidv4();
+    const expiresAt = new Date(Date.now() + this.PAIRING_TTL_MINUTES * 60 * 1000);
+
+    const session = this.pairingSessionsRepository.create({
+      code,
+      pairingToken,
+      homeId: dto.homeId,
+      hubDeviceId: dto.hubDeviceId,
+      status: 'pending',
+      expiresAt,
+      createdBy: userId,
+    });
+
+    await this.pairingSessionsRepository.save(session);
+
+    return {
+      id: session.id,
+      code: session.code,
+      qrData: `babyguardian://pair?token=${pairingToken}`,
+      expiresAt: session.expiresAt.toISOString(),
+      status: session.status,
+    };
+  }
+
+  /**
+   * Get pairing session status (with permission checks)
+   */
+  async getPairingSessionStatus(
+    userId: string,
+    sessionId: string,
+  ): Promise<PairingStatusResponseDto> {
+    const session = await this.pairingSessionsRepository.findOne({ where: { id: sessionId } });
+
+    if (!session) {
+      throw new NotFoundException('Pairing session not found');
+    }
+
+    // Only creator or home owner can view status
+    const isCreator = session.createdBy === userId;
+    const isOwner = await this.homesService
+      .assertOwner(userId, session.homeId)
+      .then(() => true)
+      .catch(() => false);
+
+    if (!isCreator && !isOwner) {
+      throw new BadRequestException('Not authorized to view this session');
+    }
+
+    // Check if expired
+    if (session.expiresAt.getTime() < Date.now()) {
+      return {
+        status: 'expired',
+      };
+    }
+
+    return {
+      status: session.status,
+      claimedBy: session.claimedBy,
+      claimedAt: session.claimedAt?.toISOString(),
+    };
+  }
+
+  /**
+   * Cancel a pairing session (hub only)
+   */
+  async cancelPairingSession(userId: string, sessionId: string): Promise<void> {
+    const session = await this.pairingSessionsRepository.findOne({ where: { id: sessionId } });
+
+    if (!session) {
+      throw new NotFoundException('Pairing session not found');
+    }
+
+    // Only creator can cancel
+    if (session.createdBy !== userId) {
+      throw new BadRequestException('Only creator can cancel this session');
+    }
+
+    session.status = 'cancelled';
+    session.cancelledAt = new Date();
+    await this.pairingSessionsRepository.save(session);
+  }
+
+  /**
+   * Mobile claims a pairing session using code or token
+   */
+  async claimPairingSession(
+    userId: string,
+    ipAddress: string,
+    dto: ClaimPairingSessionDto,
+  ): Promise<ClaimResponseDto> {
+    if (!dto.code && !dto.pairingToken) {
+      throw new BadRequestException('Either code or pairingToken must be provided');
+    }
+
+    // Rate limiting check
+    await this.checkRateLimit(userId, ipAddress);
+
+    let session: PairingSession | null = null;
+
+    if (dto.code) {
+      session = await this.pairingSessionsRepository.findOne({
+        where: { code: dto.code.toUpperCase() },
+      });
+    } else if (dto.pairingToken) {
+      session = await this.pairingSessionsRepository.findOne({
+        where: { pairingToken: dto.pairingToken },
+      });
+    }
+
+    if (!session) {
+      await this.recordFailedAttempt(userId, ipAddress);
+      return {
+        success: false,
+        reason: 'Invalid pairing code or token',
+      };
+    }
+
+    // Check if expired
+    if (session.expiresAt.getTime() < Date.now()) {
+      await this.recordFailedAttempt(userId, ipAddress);
+      return {
+        success: false,
+        reason: 'Pairing code expired',
+      };
+    }
+
+    // Check if already claimed (one-time use)
+    if (session.claimedAt) {
+      await this.recordFailedAttempt(userId, ipAddress);
+      return {
+        success: false,
+        reason: 'Pairing code already used',
+      };
+    }
+
+    // Claim the session
+    session.status = 'claimed';
+    session.claimedBy = userId;
+    session.claimedAt = new Date();
+    session.claimedFromIp = ipAddress;
+
+    await this.pairingSessionsRepository.save(session);
+
+    return {
+      success: true,
+      homeId: session.homeId,
+    };
+  }
+
+  /**
+   * Check rate limiting for failed attempts
+   */
+  private async checkRateLimit(userId: string, ipAddress: string): Promise<void> {
+    const windowStart = new Date(
+      Date.now() - this.FAILED_ATTEMPTS_WINDOW_MINUTES * 60 * 1000,
+    );
+
+    const failedCount = await this.pairingSessionsRepository
+      .createQueryBuilder()
+      .where(
+        '(claimed_by = :userId OR claimed_from_ip = :ipAddress) AND claimed_at IS NULL AND expires_at < NOW() AND created_at > :windowStart',
+        {
+          userId,
+          ipAddress,
+          windowStart,
+        },
+      )
+      .getCount();
+
+    if (failedCount >= this.MAX_FAILED_ATTEMPTS) {
+      throw new TooManyRequestsException(
+        `Too many failed attempts. Try again in ${this.FAILED_ATTEMPTS_WINDOW_MINUTES} minutes.`,
+      );
+    }
+  }
+
+  /**
+   * Record a failed claim attempt for rate limiting
+   */
+  private async recordFailedAttempt(userId: string, ipAddress: string): Promise<void> {
+    // Create a temporary failed record for rate limiting
+    // (This could be moved to a separate table if needed)
+    const failedSession = this.pairingSessionsRepository.create({
+      code: `FAILED-${Date.now()}`,
+      pairingToken: uuidv4(),
+      homeId: 'temp',
+      status: 'expired',
+      expiresAt: new Date(Date.now() - 1),
+      createdBy: userId,
+      claimedBy: userId,
+      claimedFromIp: ipAddress,
+      claimedAt: new Date(),
+    });
+    await this.pairingSessionsRepository.save(failedSession);
+  }
+
+  /**
+   * Clean up expired pairing sessions (should be called via cron job)
+   */
+  async cleanupExpiredSessions(): Promise<number> {
+    const result = await this.pairingSessionsRepository.delete({
+      expiresAt: MoreThan(new Date()),
+      status: 'pending',
+    });
+    return result.affected || 0;
   }
 }

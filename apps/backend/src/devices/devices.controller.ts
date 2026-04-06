@@ -1,11 +1,14 @@
-import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Request } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Request, Ip } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { AppJwtAuthGuard } from '../auth/app-jwt-auth.guard';
 import { DevicesService } from './devices.service';
 import { CreateDeviceDto } from './dto/create-device.dto';
 import { DiscoverDeviceDto } from './dto/discover-device.dto';
 import { PairingTokenDto } from './dto/pairing-token.dto';
 import { PairingConfirmDto } from './dto/pairing-confirm.dto';
+import { CreatePairingSessionDto } from './dto/create-pairing-session.dto';
+import { ClaimPairingSessionDto } from './dto/claim-pairing-session.dto';
+import { PairingSessionResponseDto, ClaimResponseDto, PairingStatusResponseDto } from './dto/pairing-session-response.dto';
 
 @ApiTags('devices')
 @ApiBearerAuth()
@@ -48,6 +51,70 @@ export class DevicesController {
   @ApiOperation({ summary: 'Confirm pairing from hub' })
   confirmPairing(@Body() dto: PairingConfirmDto, @Request() req: { user: { id: string } }) {
     return this.devicesService.confirmPairing(dto.code, req.user.id);
+  }
+
+  @Post('pairing/sessions')
+  @ApiOperation({
+    summary: 'Create pairing session (hub generates code)',
+    description: 'Hub creates a new pairing session. Returns code and QR payload for mobile to claim.',
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'Pairing session created',
+    type: PairingSessionResponseDto,
+  })
+  createPairingSession(
+    @Body() dto: CreatePairingSessionDto,
+    @Request() req: { user: { id: string } },
+  ) {
+    return this.devicesService.createPairingSessionForUser(req.user.id, dto);
+  }
+
+  @Get('pairing/sessions/:sessionId')
+  @ApiOperation({
+    summary: 'Get pairing session status',
+    description: 'Poll for session status. Only creator or home owner can view.',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Session status',
+    type: PairingStatusResponseDto,
+  })
+  getPairingSessionStatus(
+    @Param('sessionId') sessionId: string,
+    @Request() req: { user: { id: string } },
+  ) {
+    return this.devicesService.getPairingSessionStatus(req.user.id, sessionId);
+  }
+
+  @Post('pairing/sessions/:sessionId/cancel')
+  @ApiOperation({
+    summary: 'Cancel pairing session',
+    description: 'Only creator can cancel.',
+  })
+  cancelPairingSession(
+    @Param('sessionId') sessionId: string,
+    @Request() req: { user: { id: string } },
+  ) {
+    return this.devicesService.cancelPairingSession(req.user.id, sessionId);
+  }
+
+  @Post('pairing/claim')
+  @ApiOperation({
+    summary: 'Claim pairing session (mobile)',
+    description: 'Mobile claims session using code or pairingToken. Links mobile user to home.',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Claim result',
+    type: ClaimResponseDto,
+  })
+  claimPairingSession(
+    @Body() dto: ClaimPairingSessionDto,
+    @Request() req: { user: { id: string } },
+    @Ip() ipAddress: string,
+  ) {
+    return this.devicesService.claimPairingSession(req.user.id, ipAddress, dto);
   }
 
   @Patch(':id/state')
