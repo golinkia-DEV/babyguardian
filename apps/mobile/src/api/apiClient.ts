@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 
-const DEFAULT_API_URL = 'https://babyguardian.golinkia.com/api/v1';
+const API_URL = 'https://babyguardian.golinkia.com/api/v1';
 
 export const apiClient = axios.create({
-  baseURL: process.env.REACT_NATIVE_API_URL || DEFAULT_API_URL,
+  baseURL: API_URL,
   timeout: 15000,
 });
 
