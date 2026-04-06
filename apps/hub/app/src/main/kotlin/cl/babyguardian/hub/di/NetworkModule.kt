@@ -2,10 +2,17 @@ package cl.babyguardian.hub.di
 
 import cl.babyguardian.hub.BuildConfig
 import cl.babyguardian.hub.data.api.AuthApi
+import cl.babyguardian.hub.data.api.BabiesApi
+import cl.babyguardian.hub.data.api.CamerasApi
+import cl.babyguardian.hub.data.api.ConfigApi
 import cl.babyguardian.hub.data.api.DevicesApi
 import cl.babyguardian.hub.data.api.EventsApi
 import cl.babyguardian.hub.data.api.HomesApi
+import cl.babyguardian.hub.data.api.SmartDevicesApi
 import cl.babyguardian.hub.data.local.HubPreferencesRepository
+import cl.babyguardian.hub.data.local.SyncDatabase
+import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -113,4 +120,26 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideEventsApi(retrofit: Retrofit): EventsApi = retrofit.create(EventsApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideCamerasApi(retrofit: Retrofit): CamerasApi = retrofit.create(CamerasApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideBabiesApi(retrofit: Retrofit): BabiesApi = retrofit.create(BabiesApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideSmartDevicesApi(retrofit: Retrofit): SmartDevicesApi = retrofit.create(SmartDevicesApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideConfigApi(retrofit: Retrofit): ConfigApi = retrofit.create(ConfigApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideSyncDatabase(@ApplicationContext context: Context): SyncDatabase {
+        return SyncDatabase.getInstance(context)
+    }
 }
