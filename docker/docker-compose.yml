@@ -12,8 +12,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U babyguardian"]
       interval: 10s
@@ -26,8 +26,8 @@ services:
     image: redis:7-alpine
     container_name: babyguardian-redis
     restart: unless-stopped
-    ports:
-      - "6379:6379"
+    # ports:
+    #   - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
@@ -60,12 +60,12 @@ services:
       - backend_uploads:/app/uploads
     networks:
       - babyguardian-net
-    healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
+    # healthcheck:
+    #   test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 10s
 
   nginx:
     build:
@@ -74,8 +74,7 @@ services:
     container_name: babyguardian-nginx
     restart: unless-stopped
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     environment:
       SSL_DOMAIN: ${SSL_DOMAIN:-babyguard.golinkia.com}
       SSL_EMAIL: ${SSL_EMAIL:-}

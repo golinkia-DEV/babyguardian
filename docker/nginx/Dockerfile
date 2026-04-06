@@ -1,7 +1,7 @@
 FROM nginx:1.25-alpine
 
-# Install certbot and dependencies for Let's Encrypt
-RUN apk add --no-cache certbot certbot-nginx python3 py3-pip
+# Install certbot, openssl, and dependencies for Let's Encrypt
+RUN apk add --no-cache certbot certbot-nginx python3 py3-pip openssl
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
