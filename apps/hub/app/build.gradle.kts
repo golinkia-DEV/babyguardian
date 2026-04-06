@@ -33,13 +33,13 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("String", "API_BASE_URL", "\"https://api.babyguardian.example/api/v1/\"")
+            buildConfigField("String", "API_BASE_URL", "\"https://babyguardian.golinkia.com/api/v1/\"")
             buildConfigField("boolean", "DEV_SKIP_AUTH", "false")
         }
         debug {
             isDebuggable = true
-            // Emulador Android → host: 10.0.2.2; dispositivo físico: IP de tu máquina en LAN
-            buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:3000/api/v1/\"")
+            // Production server
+            buildConfigField("String", "API_BASE_URL", "\"https://babyguardian.golinkia.com/api/v1/\"")
             // En apps/hub/local.properties: dev.skip.auth=true (+ backend AUTH_DEV_BYPASS y AUTH_DEV_BYPASS_USER_ID)
             buildConfigField("boolean", "DEV_SKIP_AUTH", if (devSkipAuth) "true" else "false")
         }
