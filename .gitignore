@@ -8,6 +8,7 @@ yarn-error.log*
 # Android
 *.iml
 .gradle
+gradle-wrapper.jar
 /local.properties
 /.idea
 .DS_Store
@@ -19,6 +20,11 @@ yarn-error.log*
 *.aab
 *.keystore
 !debug.keystore
+.codebuddy
+.settings/
+bin/
+gen/
+*.dex
 
 # iOS
 ios/Pods/
