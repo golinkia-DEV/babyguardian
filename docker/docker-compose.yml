@@ -49,7 +49,7 @@ services:
       DATABASE_URL: postgresql://babyguardian:babyguardian_secret_2024@postgres:5432/babyguardian
       REDIS_URL: redis://redis:6379
       JWT_SECRET: ${JWT_SECRET:-change_this_to_a_long_random_secret_in_production}
-      JWT_EXPIRES_IN: 7d
+      JWT_EXPIRES_IN: 30d
       FCM_SERVER_KEY: ${FCM_SERVER_KEY:-your_fcm_key_here}
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
       PORT: 3000
