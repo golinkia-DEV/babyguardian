@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cl.babyguardian.hub.BuildConfig
 import cl.babyguardian.hub.data.api.DevicesApi
+import cl.babyguardian.hub.data.api.HomesApi
 import cl.babyguardian.hub.data.local.HubPreferencesRepository
 import cl.babyguardian.hub.data.model.CreatePairingSessionRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,6 +31,7 @@ data class PairingUiState(
 @HiltViewModel
 class PairingViewModel @Inject constructor(
     private val devicesApi: DevicesApi,
+    private val homesApi: HomesApi,
     private val hubPrefs: HubPreferencesRepository,
 ) : ViewModel() {
 
@@ -38,19 +40,44 @@ class PairingViewModel @Inject constructor(
 
     private var pollingJob: kotlinx.coroutines.Job? = null
 
+    /** Hogar usado en la sesión actual; al pasar a claimed se persiste en preferencias. */
+    private var lastSessionHomeId: String? = null
+
     /**
      * Hub generates a new pairing session
      */
     fun generatePairingCode() {
-        val homeId = hubPrefs.getPairedHomeId() ?: run {
-            _uiState.update { it.copy(error = "No se encontró el hogar") }
-            return
-        }
-
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true, error = null) }
+            _uiState.update { it.copy(error = null) }
+            val token = getAuthToken() ?: return@launch
+
+            _uiState.update { it.copy(isLoading = true) }
+
+            val homeId = try {
+                hubPrefs.getPairedHomeId() ?: homesApi.getMyHomes("Bearer $token").firstOrNull()?.id
+            } catch (e: Exception) {
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = e.message ?: "No se pudo obtener tus hogares",
+                    )
+                }
+                return@launch
+            }
+
+            if (homeId == null) {
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = "No tienes ningún hogar. Crea uno en la app móvil con esta misma cuenta e inténtalo de nuevo.",
+                    )
+                }
+                return@launch
+            }
+
+            lastSessionHomeId = homeId
+
             try {
-                val token = getAuthToken() ?: return@launch
                 val res = devicesApi.createPairingSession(
                     "Bearer $token",
                     CreatePairingSessionRequest(homeId),
@@ -110,6 +137,7 @@ class PairingViewModel @Inject constructor(
 
                     when (status.status) {
                         "claimed" -> {
+                            lastSessionHomeId?.let { hubPrefs.setPairedHomeId(it) }
                             _uiState.update {
                                 it.copy(
                                     isPaired = true,
@@ -138,6 +166,7 @@ class PairingViewModel @Inject constructor(
 
     fun regenerateCode() {
         pollingJob?.cancel()
+        lastSessionHomeId = null
         _uiState.update {
             it.copy(
                 pairingCode = null,

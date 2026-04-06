@@ -10,7 +10,7 @@ public final class BuildConfig {
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0.0";
   // Field from build type: debug
-  public static final String API_BASE_URL = "http://10.0.2.2:3000/api/v1/";
+  public static final String API_BASE_URL = "https://babyguardian.golinkia.com/api/v1/";
   // Field from build type: debug
   public static final boolean DEV_SKIP_AUTH = false;
 }

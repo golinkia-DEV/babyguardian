@@ -1,4 +1,4 @@
-#Fri Mar 27 22:47:59 CLST 2026
+#Mon Apr 06 15:23:35 CLT 2026
 base.0=/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.10=/Users/felipe.gamonal/proyecto/babyguardian/apps/hub/app/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex

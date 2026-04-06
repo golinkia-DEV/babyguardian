@@ -1,6 +1,7 @@
 package cl.babyguardian.hub.ui.screens.pairing;
 
 import cl.babyguardian.hub.data.api.DevicesApi;
+import cl.babyguardian.hub.data.api.HomesApi;
 import cl.babyguardian.hub.data.local.HubPreferencesRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
@@ -25,26 +26,29 @@ import javax.inject.Provider;
 public final class PairingViewModel_Factory implements Factory<PairingViewModel> {
   private final Provider<DevicesApi> devicesApiProvider;
 
+  private final Provider<HomesApi> homesApiProvider;
+
   private final Provider<HubPreferencesRepository> hubPrefsProvider;
 
   public PairingViewModel_Factory(Provider<DevicesApi> devicesApiProvider,
-      Provider<HubPreferencesRepository> hubPrefsProvider) {
+      Provider<HomesApi> homesApiProvider, Provider<HubPreferencesRepository> hubPrefsProvider) {
     this.devicesApiProvider = devicesApiProvider;
+    this.homesApiProvider = homesApiProvider;
     this.hubPrefsProvider = hubPrefsProvider;
   }
 
   @Override
   public PairingViewModel get() {
-    return newInstance(devicesApiProvider.get(), hubPrefsProvider.get());
+    return newInstance(devicesApiProvider.get(), homesApiProvider.get(), hubPrefsProvider.get());
   }
 
   public static PairingViewModel_Factory create(Provider<DevicesApi> devicesApiProvider,
-      Provider<HubPreferencesRepository> hubPrefsProvider) {
-    return new PairingViewModel_Factory(devicesApiProvider, hubPrefsProvider);
+      Provider<HomesApi> homesApiProvider, Provider<HubPreferencesRepository> hubPrefsProvider) {
+    return new PairingViewModel_Factory(devicesApiProvider, homesApiProvider, hubPrefsProvider);
   }
 
-  public static PairingViewModel newInstance(DevicesApi devicesApi,
+  public static PairingViewModel newInstance(DevicesApi devicesApi, HomesApi homesApi,
       HubPreferencesRepository hubPrefs) {
-    return new PairingViewModel(devicesApi, hubPrefs);
+    return new PairingViewModel(devicesApi, homesApi, hubPrefs);
   }
 }

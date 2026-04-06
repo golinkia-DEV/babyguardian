@@ -20,6 +20,11 @@ data class LoginUserDto(
     val fullName: String?,
 )
 
+data class HomeDto(
+    val id: String,
+    val name: String? = null,
+)
+
 data class PairingConfirmRequest(
     val code: String,
 )

@@ -1,0 +1,10 @@
+package cl.babyguardian.hub.data.api
+
+import cl.babyguardian.hub.data.model.HomeDto
+import retrofit2.http.GET
+import retrofit2.http.Header
+
+interface HomesApi {
+    @GET("homes/mine")
+    suspend fun getMyHomes(@Header("Authorization") authorization: String): List<HomeDto>
+}

@@ -4,6 +4,7 @@ import cl.babyguardian.hub.BuildConfig
 import cl.babyguardian.hub.data.api.AuthApi
 import cl.babyguardian.hub.data.api.DevicesApi
 import cl.babyguardian.hub.data.api.EventsApi
+import cl.babyguardian.hub.data.api.HomesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -79,6 +80,10 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideDevicesApi(retrofit: Retrofit): DevicesApi = retrofit.create(DevicesApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideHomesApi(retrofit: Retrofit): HomesApi = retrofit.create(HomesApi::class.java)
 
     @Provides
     @Singleton

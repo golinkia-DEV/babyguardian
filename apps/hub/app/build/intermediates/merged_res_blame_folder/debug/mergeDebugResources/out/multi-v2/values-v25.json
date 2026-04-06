@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-3:/values-v25/values-v25.xml",
+            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-83:/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/3aa8244bc27dc2fcea4ce060d3c11f2f/gradle/caches/transforms-4/d0bf35254d69103fa97d4e8d899d8954/transformed/appcompat-1.6.1/res/values-v25/values-v25.xml",
+                    "source": "/Users/felipe.gamonal/.gradle/caches/transforms-4/d0bf35254d69103fa97d4e8d899d8954/transformed/appcompat-1.6.1/res/values-v25/values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

@@ -230,13 +230,37 @@ fun PairingScreen(
                     }
                 }
             } else {
-                // Loading state
-                CircularProgressIndicator()
-                Spacer(Modifier.height(16.dp))
+                // pairingCode == null: carga inicial, petición en curso o fallo (antes de mostrar QR)
+                val waitingInitial =
+                    uiState.error == null && !uiState.isLoading && uiState.pairingCode == null
+                if (uiState.isLoading || waitingInitial) {
+                    CircularProgressIndicator()
+                    Spacer(Modifier.height(16.dp))
+                }
                 Text(
-                    "Generando código...",
+                    when {
+                        uiState.error != null -> "No se pudo generar el código"
+                        else -> "Generando código..."
+                    },
                     style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.85f),
+                    textAlign = TextAlign.Center,
                 )
+                uiState.error?.let { err ->
+                    Spacer(Modifier.height(16.dp))
+                    Text(
+                        err,
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodySmall,
+                        textAlign = TextAlign.Center,
+                    )
+                }
+                if (uiState.error != null) {
+                    Spacer(Modifier.height(20.dp))
+                    Button(onClick = { viewModel.generatePairingCode() }) {
+                        Text("Reintentar")
+                    }
+                }
             }
         }
     }

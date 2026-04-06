@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-3:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-83:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/3aa8244bc27dc2fcea4ce060d3c11f2f/gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/res/values-watch-v20/values.xml",
+                    "source": "/Users/felipe.gamonal/.gradle/caches/transforms-4/eb6a53b45e0a294134ba44eeab430a19/transformed/play-services-auth-21.3.0/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/3aa8244bc27dc2fcea4ce060d3c11f2f/gradle/caches/transforms-4/d0bf35254d69103fa97d4e8d899d8954/transformed/appcompat-1.6.1/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "/Users/felipe.gamonal/.gradle/caches/transforms-4/d0bf35254d69103fa97d4e8d899d8954/transformed/appcompat-1.6.1/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

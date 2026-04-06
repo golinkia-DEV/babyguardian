@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-3:/values-v23/values-v23.xml",
+            "outputFile": "cl.babyguardian.hub.app-mergeDebugResources-83:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/3aa8244bc27dc2fcea4ce060d3c11f2f/gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/res/values-v23/values-v23.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,121",
-                        "endColumns": "65,62",
-                        "endOffsets": "116,179"
-                    }
-                },
-                {
-                    "source": "/private/var/folders/y1/1vxn6g0x303_97nhyy7xv4gm0000gq/T/cursor-sandbox-cache/3aa8244bc27dc2fcea4ce060d3c11f2f/gradle/caches/transforms-4/d0bf35254d69103fa97d4e8d899d8954/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
+                    "source": "/Users/felipe.gamonal/.gradle/caches/transforms-4/d0bf35254d69103fa97d4e8d899d8954/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -30,6 +20,16 @@
                         "endLines": "4,5,6,7,21,35,36,37,40,44,45,46,47,51",
                         "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
                         "endOffsets": "314,449,524,611,1349,2099,2218,2345,2567,2791,2906,3013,3126,3356"
+                    }
+                },
+                {
+                    "source": "/Users/felipe.gamonal/.gradle/caches/transforms-4/653d919857ce5d1395a0452c63802d8d/transformed/work-runtime-2.9.0/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
                     }
                 }
             ]
