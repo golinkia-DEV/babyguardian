@@ -5,10 +5,13 @@ import cl.babyguardian.hub.data.api.AuthApi
 import cl.babyguardian.hub.data.api.DevicesApi
 import cl.babyguardian.hub.data.api.EventsApi
 import cl.babyguardian.hub.data.api.HomesApi
+import cl.babyguardian.hub.data.local.HubPreferencesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.runBlocking
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -27,7 +30,28 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttp(): OkHttpClient {
+    fun provideAuthInterceptor(prefs: HubPreferencesRepository): Interceptor {
+        return Interceptor { chain ->
+            val response = chain.proceed(chain.request())
+
+            // Si recibe 401 (token expirado), limpiar token y cerrar sesión
+            if (response.code == 401) {
+                try {
+                    runBlocking {
+                        prefs.setAccessToken(null)
+                    }
+                } catch (e: Exception) {
+                    // Ignorar errores al limpiar
+                }
+            }
+
+            response
+        }
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttp(authInterceptor: Interceptor): OkHttpClient {
         val logging = HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY
@@ -38,6 +62,7 @@ object NetworkModule {
 
         val builder = OkHttpClient.Builder()
             .addInterceptor(logging)
+            .addInterceptor(authInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
 
