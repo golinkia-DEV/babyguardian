@@ -1,0 +1,208 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║          BABYGUARDIAN DEPLOYMENT - QUICK REFERENCE CARD                   ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 GENERAR HASH
+
+  $ openssl rand -hex 16
+
+  Resultado: 7d8f3a2c9e1b4f5a6c8d9e0f1a2b3c4d  (32 caracteres)
+
+  ⚠️  Guardar en password manager
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 INSTALACIÓN EN VPS
+
+  ssh root@23.95.140.206
+  git clone https://github.com/tu-repo/babyguardian.git
+  cd babyguardian/apps/backend/deploy
+  sudo bash setup-complete.sh
+
+  Responder cuando pida:
+  - Dominio: babyguardian.golinkia.com
+  - Email: admin@golinkia.com
+  - Hash: [tu hash de 32 caracteres]
+
+  Esperar ~10 minutos...
+  ✅ Listo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔐 INTEGRAR EN APP
+
+  Opción 1: React / Web
+  ──────────────────────
+  const API_HASH = '7d8f3a2c9e1b4f5a6c8d9e0f1a2b3c4d';
+
+  axios.interceptors.request.use((config) => {
+    config.headers['X-App-Hash'] = API_HASH;
+    return config;
+  });
+
+  Opción 2: React Native / Fetch
+  ───────────────────────────────
+  const API_HASH = '7d8f3a2c9e1b4f5a6c8d9e0f1a2b3c4d';
+
+  fetch('https://babyguardian.golinkia.com/api/v1', {
+    headers: { 'X-App-Hash': API_HASH }
+  });
+
+  Opción 3: Flutter
+  ─────────────────
+  const String API_HASH = '7d8f3a2c9e1b4f5a6c8d9e0f1a2b3c4d';
+
+  http.get(..., headers: {'X-App-Hash': API_HASH});
+
+  Opción 4: Curl (testing)
+  ────────────────────────
+  curl -H "X-App-Hash: 7d8f3a2c9e1b4f5a6c8d9e0f1a2b3c4d" \
+    https://babyguardian.golinkia.com/api/v1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ DESPUÉS DE INSTALAR
+
+  Ver estado:
+  $ systemctl status babyguardian-backend
+
+  Ver logs:
+  $ journalctl -u babyguardian-backend -f
+
+  Test de salud:
+  $ curl https://babyguardian.golinkia.com/health
+
+  Test con hash:
+  $ curl -H "X-App-Hash: <hash>" \
+    https://babyguardian.golinkia.com/api/v1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 OPERACIONES COMUNES
+
+  Cambiar hash (sin downtime):
+  $ sudo bash update-hash.sh <nuevo_hash>
+
+  Reiniciar backend:
+  $ sudo systemctl restart babyguardian-backend
+
+  Ver configuración nginx:
+  $ cat /etc/nginx/sites-available/babyguardian
+
+  Renovar certificado SSL:
+  $ sudo certbot renew --dry-run
+
+  Ver certificado actual:
+  $ sudo certbot certificates
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 URLS DE ACCESO
+
+  HTTPS:       https://babyguardian.golinkia.com
+  API:         https://babyguardian.golinkia.com/api/v1
+  Health:      https://babyguardian.golinkia.com/health (sin hash)
+  Swagger:     https://babyguardian.golinkia.com/api/docs
+
+  Backend interno: http://localhost:3000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🗂️  UBICACIONES IMPORTANTES
+
+  Backend:           /opt/babyguardian/backend
+  Variables:         /opt/babyguardian/backend/.env
+  Nginx config:      /etc/nginx/sites-available/babyguardian
+  SSL certs:         /etc/letsencrypt/live/babyguardian.golinkia.com/
+  Logs backend:      journalctl -u babyguardian-backend
+  Logs nginx:        /var/log/nginx/babyguardian-*.log
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🐛 TROUBLESHOOTING
+
+  ❌ "Connection refused"
+     $ systemctl status babyguardian-backend
+     $ journalctl -u babyguardian-backend -n 20
+
+  ❌ "401 Unauthorized"
+     Verificar que X-App-Hash header sea exacto (32 caracteres)
+     $ echo $API_HASH  # en tu app
+
+  ❌ "SSL certificate error"
+     $ sudo certbot certificates
+     $ sudo certbot renew --dry-run
+
+  ❌ "502 Bad Gateway"
+     Backend caído: $ systemctl restart babyguardian-backend
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTACIÓN DISPONIBLE
+
+  INDEX.md                    Navegación principal
+  README_DEPLOYMENT.md        Resumen y checklist
+  SETUP_VPS.md                Guía detallada
+  HASH_AUTHENTICATION.md      Ejemplos de código (5 frameworks)
+  TEST_DEPLOYMENT.md          Validación post-deploy
+  QUICK_REFERENCE.txt         Esta tarjeta (imprimible)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ CONSEJOS RÁPIDOS
+
+  1. Guardar hash en password manager, NO en plain text
+  2. Cambiar hash cada 3-6 meses por seguridad
+  3. HTTPS está forzado automáticamente
+  4. Rate limiting está activo (3 req/s en auth)
+  5. Logs se guardan automáticamente
+  6. Certificado SSL se renueva automáticamente
+  7. Backend se reinicia automáticamente si cae
+  8. Monitorear: tail -f /var/log/nginx/babyguardian-*.log
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 CHECKLIST POST-DEPLOY
+
+  [ ] Instalación completada sin errores
+  [ ] Health check responde: curl https://domain/health
+  [ ] API con hash responde: curl -H "X-App-Hash: hash" https://domain/api/v1
+  [ ] Sin hash rechaza (401): curl https://domain/api/v1
+  [ ] SSL válido: openssl s_client -connect domain:443
+  [ ] Logs sin errores: journalctl -u babyguardian-backend
+  [ ] App se conecta correctamente
+  [ ] Rate limiting funciona
+  [ ] Base de datos ok: psql babyguardian_prod -c "SELECT 1"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 INFORMACIÓN RÁPIDA
+
+  IP VPS:        23.95.140.206
+  Dominio:       babyguardian.golinkia.com
+  Backend Port:  3000
+  Web Ports:     80 (HTTP), 443 (HTTPS)
+  DB:            PostgreSQL 5432
+
+  Servicio:      babyguardian-backend (systemd)
+  Usuario:       babyguardian
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ RESUMEN
+
+  ✅ Todo está automatizado
+  ✅ SSL automático (Let's Encrypt)
+  ✅ HTTPS forzado
+  ✅ Hash authentication en nginx
+  ✅ Documentación completa
+  ✅ Scripts listos para usar
+  ✅ Monitoreo y logging incluidos
+
+  🎉 Listo para desplegar en producción
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Imprime esta tarjeta y guárdala en tu escritorio 📌
