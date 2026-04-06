@@ -1,0 +1,33 @@
+# Build files
+*.apk
+*.aab
+build/
+.gradle/
+
+# IDE
+.idea/
+.DS_Store
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+
+# Local properties
+local.properties
+
+# Keys and secrets
+*.keystore
+release.keystore
+debug.keystore
+
+# Gradle
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Lint
+lint-results.xml
+
+# FCM
+google-services.json

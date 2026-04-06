@@ -1,0 +1,3 @@
+rootProject.name = 'BabyGuardianMobile'
+include ':app'
+project(':app').projectDir = new File(rootDir, 'app')
