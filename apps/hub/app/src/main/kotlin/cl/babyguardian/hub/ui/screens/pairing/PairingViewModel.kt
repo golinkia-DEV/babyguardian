@@ -6,6 +6,7 @@ import cl.babyguardian.hub.BuildConfig
 import cl.babyguardian.hub.data.api.DevicesApi
 import cl.babyguardian.hub.data.api.HomesApi
 import cl.babyguardian.hub.data.local.HubPreferencesRepository
+import cl.babyguardian.hub.data.model.CreateHomeRequest
 import cl.babyguardian.hub.data.model.CreatePairingSessionRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -53,7 +54,7 @@ class PairingViewModel @Inject constructor(
 
             _uiState.update { it.copy(isLoading = true) }
 
-            val homeId = try {
+            var homeId = try {
                 hubPrefs.getPairedHomeId() ?: homesApi.getMyHomes("Bearer $token").firstOrNull()?.id
             } catch (e: Exception) {
                 _uiState.update {
@@ -65,14 +66,27 @@ class PairingViewModel @Inject constructor(
                 return@launch
             }
 
+            // Si no hay hogar, crear uno automáticamente
             if (homeId == null) {
-                _uiState.update {
-                    it.copy(
-                        isLoading = false,
-                        error = "No tienes ningún hogar. Crea uno en la app móvil con esta misma cuenta e inténtalo de nuevo.",
+                homeId = try {
+                    val newHome = homesApi.createHome(
+                        "Bearer $token",
+                        CreateHomeRequest(
+                            name = "Mi Hogar",
+                            countryCode = "CL",
+                            timezone = "America/Santiago",
+                        ),
                     )
+                    newHome.id
+                } catch (e: Exception) {
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            error = e.message ?: "No se pudo crear un hogar",
+                        )
+                    }
+                    return@launch
                 }
-                return@launch
             }
 
             lastSessionHomeId = homeId

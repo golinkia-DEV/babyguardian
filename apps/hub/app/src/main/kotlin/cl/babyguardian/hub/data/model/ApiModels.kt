@@ -25,6 +25,12 @@ data class HomeDto(
     val name: String? = null,
 )
 
+data class CreateHomeRequest(
+    val name: String,
+    val countryCode: String = "CL",
+    val timezone: String = "America/Santiago",
+)
+
 data class PairingConfirmRequest(
     val code: String,
 )
