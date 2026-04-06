@@ -17,6 +17,8 @@ interface AuthState {
   token: string | null;
   isAuthenticated: boolean;
   hydrated: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, fullName: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   setAuth: (user: User, token: string) => void;
@@ -30,6 +32,46 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   hydrated: false,
 
   setAuth: (user, token) => set({ user, token, isAuthenticated: true }),
+
+  login: async (email, password) => {
+    const backendAuth = await authApi.login(email, password);
+    await Keychain.setGenericPassword(
+      backendAuth.user.email,
+      backendAuth.token,
+      { service: 'babyguardian.jwt' },
+    );
+    set({
+      user: {
+        id: backendAuth.user.id,
+        email: backendAuth.user.email,
+        fullName: backendAuth.user.fullName,
+        avatarUrl: backendAuth.user.avatarUrl,
+      },
+      token: backendAuth.token,
+      isAuthenticated: true,
+      hydrated: true,
+    });
+  },
+
+  register: async (email, password, fullName) => {
+    const backendAuth = await authApi.register(email, password, fullName);
+    await Keychain.setGenericPassword(
+      backendAuth.user.email,
+      backendAuth.token,
+      { service: 'babyguardian.jwt' },
+    );
+    set({
+      user: {
+        id: backendAuth.user.id,
+        email: backendAuth.user.email,
+        fullName: backendAuth.user.fullName,
+        avatarUrl: backendAuth.user.avatarUrl,
+      },
+      token: backendAuth.token,
+      isAuthenticated: true,
+      hydrated: true,
+    });
+  },
 
   hydrate: async () => {
     if (get().hydrated) return;
