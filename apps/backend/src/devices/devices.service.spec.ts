@@ -6,7 +6,7 @@ import { SmartDevice } from './smart-device.entity';
 import { InviteToken } from './invite-token.entity';
 import { PairingSession } from './pairing-session.entity';
 import { HomesService } from '../homes/homes.service';
-import { BadRequestException, TooManyRequestsException } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
 
 describe('DevicesService - Pairing Flow', () => {
   let service: DevicesService;
@@ -232,7 +232,7 @@ describe('DevicesService - Pairing Flow', () => {
 
       await expect(
         service.claimPairingSession(testUserId, testIpAddress, { code: 'INVALID' }),
-      ).rejects.toThrow(TooManyRequestsException);
+      ).rejects.toThrow(HttpException);
     });
 
     it('should require either code or pairingToken', async () => {

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException, TooManyRequestsException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, MoreThan } from 'typeorm';
 import { SmartDevice } from './smart-device.entity';
@@ -417,8 +417,9 @@ export class DevicesService {
       .getCount();
 
     if (failedCount >= this.MAX_FAILED_ATTEMPTS) {
-      throw new TooManyRequestsException(
+      throw new HttpException(
         `Too many failed attempts. Try again in ${this.FAILED_ATTEMPTS_WINDOW_MINUTES} minutes.`,
+        HttpStatus.TOO_MANY_REQUESTS,
       );
     }
   }
