@@ -2,11 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
+import { DataSource } from 'typeorm';
 import { AppModule } from './app.module';
+import { seedDatabase } from './common/seeders';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
+  const dataSource = app.get(DataSource);
   if (configService.get<boolean>('auth.devBypass')) {
     Logger.warn(
       '[AUTH] AUTH_DEV_BYPASS está activo: peticiones sin Bearer usan AUTH_DEV_BYPASS_USER_ID. No uses esto en producción.',
@@ -48,6 +51,9 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
+
+  // Run seeders
+  await seedDatabase(dataSource);
 
   await app.listen(process.env.PORT || 3000);
   console.log(`BabyGuardian API running on: ${await app.getUrl()}`);
