@@ -248,6 +248,29 @@ CREATE TABLE invite_tokens (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Pairing sessions (hub first pairing flow)
+CREATE TABLE pairing_sessions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    code VARCHAR(6) UNIQUE NOT NULL,
+    pairing_token VARCHAR(255) UNIQUE NOT NULL,
+    home_id UUID NOT NULL REFERENCES homes(id) ON DELETE CASCADE,
+    hub_device_id VARCHAR(255),
+    status VARCHAR(50) DEFAULT 'pending' CHECK (status IN ('pending', 'claimed', 'expired', 'cancelled')),
+    expires_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    created_by UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    claimed_by UUID REFERENCES users(id),
+    claimed_from_ip VARCHAR(50),
+    claimed_at TIMESTAMP WITH TIME ZONE,
+    cancelled_at TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Pairing sessions indexes
+CREATE INDEX idx_pairing_sessions_code ON pairing_sessions(code);
+CREATE INDEX idx_pairing_sessions_home_id ON pairing_sessions(home_id);
+CREATE INDEX idx_pairing_sessions_status_expires ON pairing_sessions(status, expires_at);
+CREATE INDEX idx_pairing_sessions_created_by ON pairing_sessions(created_by);
+
 -- Indexes for performance
 CREATE INDEX idx_events_home_id ON events(home_id);
 CREATE INDEX idx_events_created_at ON events(created_at DESC);
