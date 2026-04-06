@@ -251,7 +251,7 @@ CREATE TABLE invite_tokens (
 -- Pairing sessions (hub first pairing flow)
 CREATE TABLE pairing_sessions (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    code VARCHAR(6) UNIQUE NOT NULL,
+    code VARCHAR(8) UNIQUE NOT NULL,
     pairing_token VARCHAR(255) UNIQUE NOT NULL,
     home_id UUID NOT NULL REFERENCES homes(id) ON DELETE CASCADE,
     hub_device_id VARCHAR(255),
