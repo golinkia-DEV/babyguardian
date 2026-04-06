@@ -14,6 +14,7 @@ import cl.babyguardian.hub.data.api.HomesApi;
 import cl.babyguardian.hub.data.local.HubPreferencesRepository;
 import cl.babyguardian.hub.di.NetworkModule;
 import cl.babyguardian.hub.di.NetworkModule_ProvideAuthApiFactory;
+import cl.babyguardian.hub.di.NetworkModule_ProvideAuthInterceptorFactory;
 import cl.babyguardian.hub.di.NetworkModule_ProvideDevicesApiFactory;
 import cl.babyguardian.hub.di.NetworkModule_ProvideEventsApiFactory;
 import cl.babyguardian.hub.di.NetworkModule_ProvideHomesApiFactory;
@@ -62,6 +63,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.annotation.processing.Generated;
 import javax.inject.Provider;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
@@ -611,13 +613,15 @@ public final class DaggerBabyGuardianApp_HiltComponents_SingletonC {
 
     private final SingletonCImpl singletonCImpl = this;
 
+    private Provider<HubPreferencesRepository> hubPreferencesRepositoryProvider;
+
+    private Provider<Interceptor> provideAuthInterceptorProvider;
+
     private Provider<OkHttpClient> provideOkHttpProvider;
 
     private Provider<Retrofit> provideRetrofitProvider;
 
     private Provider<AuthApi> provideAuthApiProvider;
-
-    private Provider<HubPreferencesRepository> hubPreferencesRepositoryProvider;
 
     private Provider<DevicesApi> provideDevicesApiProvider;
 
@@ -641,17 +645,18 @@ public final class DaggerBabyGuardianApp_HiltComponents_SingletonC {
 
     @SuppressWarnings("unchecked")
     private void initialize(final ApplicationContextModule applicationContextModuleParam) {
+      this.hubPreferencesRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<HubPreferencesRepository>(singletonCImpl, 4));
+      this.provideAuthInterceptorProvider = DoubleCheck.provider(new SwitchingProvider<Interceptor>(singletonCImpl, 3));
       this.provideOkHttpProvider = DoubleCheck.provider(new SwitchingProvider<OkHttpClient>(singletonCImpl, 2));
       this.provideRetrofitProvider = DoubleCheck.provider(new SwitchingProvider<Retrofit>(singletonCImpl, 1));
       this.provideAuthApiProvider = DoubleCheck.provider(new SwitchingProvider<AuthApi>(singletonCImpl, 0));
-      this.hubPreferencesRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<HubPreferencesRepository>(singletonCImpl, 3));
-      this.provideDevicesApiProvider = DoubleCheck.provider(new SwitchingProvider<DevicesApi>(singletonCImpl, 4));
-      this.provideHomesApiProvider = DoubleCheck.provider(new SwitchingProvider<HomesApi>(singletonCImpl, 5));
-      this.modelDownloadManagerProvider = DoubleCheck.provider(new SwitchingProvider<ModelDownloadManager>(singletonCImpl, 7));
-      this.cryDetectionManagerProvider = DoubleCheck.provider(new SwitchingProvider<CryDetectionManager>(singletonCImpl, 6));
-      this.faceRecognitionManagerProvider = DoubleCheck.provider(new SwitchingProvider<FaceRecognitionManager>(singletonCImpl, 8));
-      this.provideEventsApiProvider = DoubleCheck.provider(new SwitchingProvider<EventsApi>(singletonCImpl, 10));
-      this.alertEscalationManagerProvider = DoubleCheck.provider(new SwitchingProvider<AlertEscalationManager>(singletonCImpl, 9));
+      this.provideDevicesApiProvider = DoubleCheck.provider(new SwitchingProvider<DevicesApi>(singletonCImpl, 5));
+      this.provideHomesApiProvider = DoubleCheck.provider(new SwitchingProvider<HomesApi>(singletonCImpl, 6));
+      this.modelDownloadManagerProvider = DoubleCheck.provider(new SwitchingProvider<ModelDownloadManager>(singletonCImpl, 8));
+      this.cryDetectionManagerProvider = DoubleCheck.provider(new SwitchingProvider<CryDetectionManager>(singletonCImpl, 7));
+      this.faceRecognitionManagerProvider = DoubleCheck.provider(new SwitchingProvider<FaceRecognitionManager>(singletonCImpl, 9));
+      this.provideEventsApiProvider = DoubleCheck.provider(new SwitchingProvider<EventsApi>(singletonCImpl, 11));
+      this.alertEscalationManagerProvider = DoubleCheck.provider(new SwitchingProvider<AlertEscalationManager>(singletonCImpl, 10));
     }
 
     @Override
@@ -694,30 +699,33 @@ public final class DaggerBabyGuardianApp_HiltComponents_SingletonC {
           return (T) NetworkModule_ProvideRetrofitFactory.provideRetrofit(singletonCImpl.provideOkHttpProvider.get());
 
           case 2: // okhttp3.OkHttpClient 
-          return (T) NetworkModule_ProvideOkHttpFactory.provideOkHttp();
+          return (T) NetworkModule_ProvideOkHttpFactory.provideOkHttp(singletonCImpl.provideAuthInterceptorProvider.get());
 
-          case 3: // cl.babyguardian.hub.data.local.HubPreferencesRepository 
+          case 3: // okhttp3.Interceptor 
+          return (T) NetworkModule_ProvideAuthInterceptorFactory.provideAuthInterceptor(singletonCImpl.hubPreferencesRepositoryProvider.get());
+
+          case 4: // cl.babyguardian.hub.data.local.HubPreferencesRepository 
           return (T) new HubPreferencesRepository(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
-          case 4: // cl.babyguardian.hub.data.api.DevicesApi 
+          case 5: // cl.babyguardian.hub.data.api.DevicesApi 
           return (T) NetworkModule_ProvideDevicesApiFactory.provideDevicesApi(singletonCImpl.provideRetrofitProvider.get());
 
-          case 5: // cl.babyguardian.hub.data.api.HomesApi 
+          case 6: // cl.babyguardian.hub.data.api.HomesApi 
           return (T) NetworkModule_ProvideHomesApiFactory.provideHomesApi(singletonCImpl.provideRetrofitProvider.get());
 
-          case 6: // cl.babyguardian.hub.service.CryDetectionManager 
+          case 7: // cl.babyguardian.hub.service.CryDetectionManager 
           return (T) new CryDetectionManager(singletonCImpl.modelDownloadManagerProvider.get());
 
-          case 7: // cl.babyguardian.hub.service.ModelDownloadManager 
+          case 8: // cl.babyguardian.hub.service.ModelDownloadManager 
           return (T) new ModelDownloadManager(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
-          case 8: // cl.babyguardian.hub.service.FaceRecognitionManager 
+          case 9: // cl.babyguardian.hub.service.FaceRecognitionManager 
           return (T) new FaceRecognitionManager(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
-          case 9: // cl.babyguardian.hub.service.AlertEscalationManager 
+          case 10: // cl.babyguardian.hub.service.AlertEscalationManager 
           return (T) new AlertEscalationManager(singletonCImpl.hubPreferencesRepositoryProvider.get(), singletonCImpl.provideEventsApiProvider.get());
 
-          case 10: // cl.babyguardian.hub.data.api.EventsApi 
+          case 11: // cl.babyguardian.hub.data.api.EventsApi 
           return (T) NetworkModule_ProvideEventsApiFactory.provideEventsApi(singletonCImpl.provideRetrofitProvider.get());
 
           default: throw new AssertionError(id);

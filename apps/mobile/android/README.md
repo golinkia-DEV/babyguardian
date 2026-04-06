@@ -99,14 +99,9 @@ cd /root/repos/babyguardian/apps/mobile/android
 
 ## Próximos pasos
 
-1. **Generar debug.keystore:**
-   ```bash
-   keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000
-   ```
+1. **Firma debug (opcional):** por defecto Gradle usa `~/.android/debug.keystore`. Solo necesitas un `app/debug.keystore` propio si el equipo comparte el mismo certificado de depuración; en ese caso genéralo con `keytool` y vuelve a enlazar `signingConfigs.debug` en `app/build.gradle`.
 
-2. **Configurar Firebase:**
-   - Descargar `google-services.json` desde Firebase Console
-   - Colocar en: `android/app/google-services.json`
+2. **Configurar Firebase:** el `google-services.json` debe incluir un cliente Android con `package_name` igual al `applicationId` (`com.babyguardian.mobile`). Lo ideal es registrar esa app en el proyecto Firebase y descargar el JSON oficial desde la consola (cada app tiene su propio `mobilesdk_app_id`).
 
 3. **Crear MainActivity.java completa:**
    - Actualmente es un template básico

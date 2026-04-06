@@ -6,6 +6,8 @@ import dagger.internal.Preconditions;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
+import javax.inject.Provider;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 
 @ScopeMetadata("javax.inject.Singleton")
@@ -22,20 +24,23 @@ import okhttp3.OkHttpClient;
     "KotlinInternalInJava"
 })
 public final class NetworkModule_ProvideOkHttpFactory implements Factory<OkHttpClient> {
+  private final Provider<Interceptor> authInterceptorProvider;
+
+  public NetworkModule_ProvideOkHttpFactory(Provider<Interceptor> authInterceptorProvider) {
+    this.authInterceptorProvider = authInterceptorProvider;
+  }
+
   @Override
   public OkHttpClient get() {
-    return provideOkHttp();
+    return provideOkHttp(authInterceptorProvider.get());
   }
 
-  public static NetworkModule_ProvideOkHttpFactory create() {
-    return InstanceHolder.INSTANCE;
+  public static NetworkModule_ProvideOkHttpFactory create(
+      Provider<Interceptor> authInterceptorProvider) {
+    return new NetworkModule_ProvideOkHttpFactory(authInterceptorProvider);
   }
 
-  public static OkHttpClient provideOkHttp() {
-    return Preconditions.checkNotNullFromProvides(NetworkModule.INSTANCE.provideOkHttp());
-  }
-
-  private static final class InstanceHolder {
-    private static final NetworkModule_ProvideOkHttpFactory INSTANCE = new NetworkModule_ProvideOkHttpFactory();
+  public static OkHttpClient provideOkHttp(Interceptor authInterceptor) {
+    return Preconditions.checkNotNullFromProvides(NetworkModule.INSTANCE.provideOkHttp(authInterceptor));
   }
 }

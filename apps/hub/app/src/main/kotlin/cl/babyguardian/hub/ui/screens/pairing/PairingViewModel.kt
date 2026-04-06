@@ -89,12 +89,22 @@ class PairingViewModel @Inject constructor(
                 }
             }
 
-            lastSessionHomeId = homeId
+            val sessionHomeId = homeId ?: run {
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = "No se pudo determinar el hogar",
+                    )
+                }
+                return@launch
+            }
+
+            lastSessionHomeId = sessionHomeId
 
             try {
                 val res = devicesApi.createPairingSession(
                     "Bearer $token",
-                    CreatePairingSessionRequest(homeId),
+                    CreatePairingSessionRequest(sessionHomeId),
                 )
                 _uiState.update {
                     it.copy(
