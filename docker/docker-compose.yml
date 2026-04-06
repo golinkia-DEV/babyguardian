@@ -19,6 +19,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - babyguardian-net
 
   redis:
     image: redis:7-alpine
@@ -28,6 +30,8 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    networks:
+      - babyguardian-net
 
   backend:
     build:
@@ -44,15 +48,67 @@ services:
       NODE_ENV: production
       DATABASE_URL: postgresql://babyguardian:babyguardian_secret_2024@postgres:5432/babyguardian
       REDIS_URL: redis://redis:6379
-      JWT_SECRET: your_jwt_secret_change_in_production
-      FCM_SERVER_KEY: your_fcm_key_here
+      JWT_SECRET: ${JWT_SECRET:-change_this_to_a_long_random_secret_in_production}
+      JWT_EXPIRES_IN: 7d
+      FCM_SERVER_KEY: ${FCM_SERVER_KEY:-your_fcm_key_here}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
       PORT: 3000
-    ports:
-      - "3000:3000"
+      CORS_ORIGINS: https://babyguard.golinkia.com
+    expose:
+      - "3000"
     volumes:
       - backend_uploads:/app/uploads
+    networks:
+      - babyguardian-net
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: babyguardian-nginx
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      SSL_DOMAIN: ${SSL_DOMAIN:-babyguard.golinkia.com}
+      SSL_EMAIL: ${SSL_EMAIL:-}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - nginx_ssl:/etc/nginx/ssl
+      - nginx_certbot:/var/www/certbot
+      - nginx_logs:/var/log/nginx
+    networks:
+      - babyguardian-net
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
 volumes:
   postgres_data:
+    driver: local
   redis_data:
+    driver: local
   backend_uploads:
+    driver: local
+  nginx_ssl:
+    driver: local
+  nginx_certbot:
+    driver: local
+  nginx_logs:
+    driver: local
+
+networks:
+  babyguardian-net:
+    driver: bridge
